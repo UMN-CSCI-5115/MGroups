@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">U of M Group Finder</string>
+    <string name="mainMenuText">Main Menu</string>
+    <string name="groupSearchButtonText">Group Search</string>
+    <string name="eventSearchButtonText">Event Search</string>
+    <string name="favoritesButtonText">Favorites</string>
+    <string name="settingsButtonText">Settings</string>
+    <string name="action_settings">Settings</string>
+
+    <color name="lightGray">#bdbdbd</color>
+    <color name="grayShadow">#7e7e7e</color>
+    <color name="maroon">#800000</color>
+    <color name="maroonShadow">#400000</color>
+    <color name="gold">#fdd017</color>
+
+
+</resources>

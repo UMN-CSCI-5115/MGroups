@@ -21,38 +21,53 @@
         android:layout_width="500dp"
         android:layout_height="100dp"
         android:text="@string/groupSearchButtonText"
-        android:layout_below="@+id/menuText"
-        android:layout_alignParentLeft="true"
+        android:onClick="gotoGroup"
         android:background="@color/lightGray"
         android:clickable="true"
         android:shadowColor="@color/grayShadow"
         android:drawableEnd="@color/grayShadow"
-        android:enabled="true" />
+        android:enabled="true"
+        android:layout_above="@+id/eventSearchButton"
+        android:layout_alignParentRight="true" />
 
     <Button
         android:id="@+id/eventSearchButton"
         android:layout_width="500dp"
         android:layout_height="100dp"
-        android:layout_below="@id/groupSearchButton"
-        android:layout_alignParentLeft="true"
         android:text="@string/eventSearchButtonText"
-        android:background="@color/lightGray" />
+        android:onClick="gotoEvent"
+        android:background="@color/lightGray"
+        android:layout_above="@+id/FavoritesButton"
+        android:layout_alignParentLeft="true" />
 
     <Button
         android:id="@+id/FavoritesButton"
         android:layout_width="500dp"
         android:layout_height="100dp"
-        android:layout_below="@id/eventSearchButton"
-        android:layout_alignParentLeft="true"
         android:text="@string/favoritesButtonText"
-        android:background="@color/lightGray" />
+        android:onClick="gotoManagement"
+        android:background="@color/lightGray"
+        android:layout_above="@+id/button"
+        android:layout_alignParentRight="true" />
 
     <Button
         android:layout_width="500dp"
         android:layout_height="100dp"
-        android:layout_below="@id/FavoritesButton"
-        android:layout_alignParentLeft="true"
         android:text="@string/settingsButtonText"
-        android:background="@color/lightGray" />
+        android:background="@color/lightGray"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/button" />
+
+    <SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/groupSearchButton"
+        android:layout_alignRight="@+id/groupSearchButton"
+        android:queryHint="@string/searchPrompt"
+        android:visibility="visible"
+        android:showAsAction="always"/>
 
 </RelativeLayout>

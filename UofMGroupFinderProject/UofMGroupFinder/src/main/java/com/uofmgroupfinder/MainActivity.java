@@ -13,11 +13,6 @@ import android.widget.Button;
 import com.uofmgroupfinder.*;
 public class MainActivity extends Activity {
 
-
-    Populate pop = new Populate();
-    //pop.populate();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

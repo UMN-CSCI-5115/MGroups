@@ -16,23 +16,21 @@ public class Group {
    private int numGroupMembers;
    private ArrayList<String> groupTags;
 
-    public Group (String name, String description, ArrayList<Agent> members, ArrayList<Activity> activities, ArrayList<String> tags){
+    public Group (String name, String description, ArrayList<Agent> members, ArrayList<String> tags){
 
         this.groupName = name;
         this.groupDescription = description;
         this.groupMembers = members;
-        this.groupActivities = activities;
         this.numGroupMembers = 1;
         this.groupTags = tags;
     }
 
 
-    public Group (String name, String description, ArrayList<Agent> members, ArrayList<Activity> activities){//tags are optional
+    public Group (String name, String description, ArrayList<Agent> members){//tags are optional
 
         this.groupName = name;
         this.groupDescription = description;
         this.groupMembers = members;
-        this.groupActivities = activities;
         this.numGroupMembers = 1;
     }
 

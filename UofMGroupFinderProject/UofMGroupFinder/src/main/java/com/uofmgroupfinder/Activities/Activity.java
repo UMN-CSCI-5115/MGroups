@@ -2,30 +2,38 @@ package com.uofmgroupfinder.Activities;
 
 import com.uofmgroupfinder.R;
 
+import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by Droideka on 12/1/13.
- */
+
 public class Activity {
     private Date eventStart;
     private Date eventEnd;
     private String eventTitle;
     private String eventDescription;
     private int numAttending;
+    private ArrayList<String> tags = new ArrayList<String>();//List of tags for search functionality
+    private String hostingGroup;//Group event is associated with
 
-    public Activity(Date start, Date end, String title, String desc)
+    public Activity(Date start, Date end, String title, String desc, String host, ArrayList<String> descriptors)
     {
         this.eventStart = start;
         this.eventEnd = end;
         this.eventTitle = title;
         this.eventDescription = desc;
         numAttending = 0;
+        hostingGroup = host;
+        tags = descriptors;
     }
 
-    public void incAttentding()
+    public Activity(Date start, Date end, String title, String desc, String host)//Descriptor tags are optional
     {
-        this.numAttending ++;
+        this.eventStart = start;
+        this.eventEnd = end;
+        this.eventTitle = title;
+        this.eventDescription = desc;
+        numAttending = 0;
+        hostingGroup = host;
     }
 
 
@@ -33,34 +41,21 @@ public class Activity {
     {
        return this.eventStart;
     }
-    public void setStart(Date start)
-    {
-        this.eventStart = start;
-    }
-
     public Date getEnd()
     {
         return this.eventEnd;
     }
-    public void setEnd(Date end)
-    {
-        this.eventEnd = end;
-    }
+    public String getEventTitle() {return this.eventTitle;}
+    public String getEventDescription() {return this.eventDescription;}
+    public int getNumAttending() {return numAttending;}
+    public ArrayList<String> getTags() {return tags;}
+    public String getHostingGroup() {return this.hostingGroup;}
 
-    public String getTitle()
-    {
-        return this.eventTitle;
-    }
-    public void setEventTitle(String title)
-    {
-        this.eventTitle = title;
-    }
-    public String getEventDescription()
-    {
-        return this.eventDescription;
-    }
-    public void setEventDescription(String desc)
-    {
-        this.eventDescription = desc;
-    }
+    public void setStart(Date incomingStart) {this.eventStart = incomingStart;}
+    public void setEnd(Date incomingEnd) {this.eventEnd = incomingEnd; }
+    public void setEventTitle(String incomingTitle) {this.eventTitle = incomingTitle;}
+    public void setEventDescription(String incomingDescription) {this.eventDescription = incomingDescription;}
+    public void setNumAttending(int incomingNumAttending) {this.numAttending = incomingNumAttending;}
+    public void setTags(ArrayList<String> incomingTags) {this.tags = incomingTags;}
+    public void setHostingGroup(String incomingHostGroup) {this.hostingGroup = incomingHostGroup;}
 }

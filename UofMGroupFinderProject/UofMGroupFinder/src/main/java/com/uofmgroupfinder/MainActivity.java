@@ -10,8 +10,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import com.uofmgroupfinder.*;
 public class MainActivity extends Activity {
+
+
+    Populate pop = new Populate();
+    //pop.populate();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

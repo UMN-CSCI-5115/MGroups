@@ -99,7 +99,7 @@
     <SearchView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/searchView"
+        android:id="@+id/mainSearchView"
         android:layout_alignParentLeft="true"
         android:layout_above="@+id/groupSearchButton"
         android:layout_alignRight="@+id/groupSearchButton"

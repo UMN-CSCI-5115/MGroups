@@ -30,4 +30,10 @@ public class Agent {
     public void addManagerActivity(Activity incomingActivity){ this.managerActivities.add(incomingActivity);}
 
 
+    public void removeMemberGroup(Group incomingGroup){ this.memberGroups.remove(incomingGroup);}
+    public void removeMemberActivity(Activity incomingActivity){ this.memberActivities.remove(incomingActivity);}
+    public void removeManagerGroup(Group incomingGroup){ this.managerGroups.remove(incomingGroup);}
+    public void removeManagerActivity(Activity incomingActivity){ this.managerActivities.remove(incomingActivity);}
+
+
 }

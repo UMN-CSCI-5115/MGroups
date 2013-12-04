@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 import com.uofmgroupfinder.*;
 
 public class MainActivity extends Activity  {
@@ -67,10 +69,10 @@ public class MainActivity extends Activity  {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
+    /**************************************************************************************************************
      * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+     *************************************************************************************************************/
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener, OnQueryTextListener {
         Button btn;
 
         public PlaceholderFragment() {
@@ -91,7 +93,11 @@ public class MainActivity extends Activity  {
 
             btn = (Button) getActivity().findViewById(R.id.settingsButton);
             btn.setOnClickListener(this);
-        }
+            
+            SearchView searchView = (SearchView) getActivity().findViewById(R.id.mainSearchView);
+            searchView.setOnQueryTextListener(this);
+            
+        }//end onActivityCreated
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -133,22 +139,22 @@ public class MainActivity extends Activity  {
                 startActivity(intent);
         }//end on click
 
+        // The following callbacks are called for the SearchView.OnQueryChangeListener
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            return true;
+        }
+     
+        @Override
+        public boolean onQueryTextSubmit (String query) {
+        	Intent i = new Intent(getActivity(), SearchResults.class);
+        	i.putExtra("searchQuery","query");
+        	i.putExtra("searchType","any");
+        	i.putExtra("searchCat", "none");
+        	startActivity(i);
+            return true;
+            
     }//end PlaceholderFragment class
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class EventFragment extends Fragment {
-
-        public EventFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_event, container, false);
-            return rootView;
-        }
-    }
-
+}
 }

@@ -50,6 +50,7 @@ public class Group {
 
     }
 
+    public Group() {};
 
     public String getGroupName() {return this.groupName;}
     public String getGroupDescription() {return this.groupDescription;}
@@ -57,6 +58,7 @@ public class Group {
     public ArrayList<Activity> getGroupActivities() {return this.groupActivities;}
     public int getNumGroupMembers() {return this.numGroupMembers;}
     public ArrayList<String> getGroupTags() {return this.groupTags;}
+    public groupTypes getGroupType() {return groupType;}
 
 
     public void setGroupName(String incomingGroupName) {this.groupName = incomingGroupName;}

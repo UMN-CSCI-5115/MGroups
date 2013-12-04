@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
+import android.widget.SearchView;
 
 public class GroupActivity extends Activity {
 
@@ -61,20 +64,65 @@ public class GroupActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
+    /**************************************************************************************************************
      * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
+     *************************************************************************************************************/
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener, SearchView.OnQueryTextListener {
+        Button btn;
 
         public PlaceholderFragment() {
         }
 
         @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            
+            SearchView searchView = (SearchView) getActivity().findViewById(R.id.groupSearchView);
+            searchView.setOnQueryTextListener(this);
+            
+        }//end onActivityCreated
+
+        @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_group, container, false);
-            return rootView;
-        }
-    }
 
+            return rootView;
+        }//end onCreateView
+
+        // Have to implement with the OnClickListner
+        // onClick is called when a view has been clicked.
+        @Override
+        public void onClick(View v) { // Parameter v stands for the view that was clicked.
+
+            Intent intent = null;
+
+            // getId() returns this view's identifier.
+            switch (v.getId()) {
+                default:
+                    break;
+            }//end switch
+
+            if(intent != null)
+                startActivity(intent);
+        }//end on click
+
+        // The following callbacks are called for the SearchView.OnQueryChangeListener
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            return true;
+        }
+     
+        @Override
+        public boolean onQueryTextSubmit (String query) {
+        	Intent i = new Intent(getActivity(), SearchResults.class);
+        	i.putExtra("searchQuery","query");
+        	i.putExtra("searchType","group");
+        	i.putExtra("searchCat", "none");
+        	startActivity(i);
+            return true;
+            
+    }//end PlaceholderFragment class
+
+}
 }

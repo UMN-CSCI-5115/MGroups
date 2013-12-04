@@ -14,9 +14,6 @@ import java.util.Date;
 
 public class Populate {
 
-    private static ArrayList<Activity> masterActivities = new ArrayList<Activity>();
-    private static ArrayList<Group> masterGroups = new ArrayList<Group>();
-
 
     public static void populate() {
     //Agents
@@ -144,49 +141,6 @@ public class Populate {
     //Populate Agent
 
 }
-
-
-    public static void addGroup(Group incomingGroup){
-
-        masterGroups.add(incomingGroup);
-
-    }
-
-    public static void removeGroup(Group groupToRemove){
-
-        for(Group group : masterGroups){
-
-            if (group.equals(groupToRemove)){
-                masterGroups.remove(group);
-            }
-        }
-    }
-
-    public static ArrayList<Group> searchGroups(String searchParams){
-
-        ArrayList<Group> listToReturn = new ArrayList<Group>();
-
-        //Search using each parameter
-        String[] params = searchParams.split(" ");
-
-
-        for (Group group : masterGroups){//Search each group
-
-            for (int i = 0; i < params.length; i++){//for each individual parameter in search string
-
-                if (group.getGroupName().contains(params[i])){//If the group name contains the parameter
-                    listToReturn.add(group);
-                }
-
-                for (String tag : group.getGroupTags()){//for each group tag of each group
-                    if (tag.contains(params[i])){//if the tag contains the parameter
-                        listToReturn.add(group);
-                    }
-                }
-            }
-        }
-    return listToReturn;
-    }
 
 
 

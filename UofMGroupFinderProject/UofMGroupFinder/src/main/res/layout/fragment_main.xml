@@ -33,7 +33,7 @@
         android:gravity="left|center_vertical"
         android:drawablePadding="20dp"
         android:paddingLeft="20dp"
-        android:drawableLeft="@drawable/mgoldy"
+        android:drawableLeft="@drawable/srchgroups"
         android:layout_alignParentRight="true" />
 
     <Button
@@ -48,7 +48,7 @@
         android:gravity="left|center_vertical"
         android:drawablePadding="20dp"
         android:paddingLeft="20dp"
-        android:drawableLeft="@drawable/mgoldy"
+        android:drawableLeft="@drawable/srchevents"
         android:layout_alignParentLeft="true" />
 
     <Button
@@ -63,7 +63,7 @@
         android:gravity="left|center_vertical"
         android:drawablePadding="20dp"
         android:paddingLeft="20dp"
-        android:drawableLeft="@drawable/mgoldy"
+        android:drawableLeft="@drawable/notifications"
         android:layout_alignParentRight="true" />
 
     <Button
@@ -78,7 +78,7 @@
         android:gravity="left|center_vertical"
         android:drawablePadding="20dp"
         android:paddingLeft="20dp"
-        android:drawableLeft="@drawable/mgoldy"
+        android:drawableLeft="@drawable/managegroups"
         android:layout_alignParentRight="true" />
 
     <Button
@@ -93,7 +93,7 @@
         android:layout_marginBottom="1dp"
         android:paddingLeft="20dp"
         android:layout_alignParentLeft="true"
-        android:drawableLeft="@drawable/mgoldy"
+        android:drawableLeft="@drawable/gear"
         android:id="@+id/settingsButton" />
 
     <SearchView

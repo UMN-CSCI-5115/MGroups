@@ -10,6 +10,7 @@
 
     <application
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@drawable/mgoldy"
         android:label="@string/test"
         android:theme="@style/AppTheme" >

@@ -14,7 +14,7 @@
         android:id="@+id/listView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="158dp" />
+        android:layout_marginTop="108dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -23,7 +23,8 @@
         android:id="@+id/button"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/listView"
-        android:layout_marginTop="103dp" />
+        android:layout_marginTop="53dp"
+        android:layout_marginRight="15dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +34,7 @@
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp" />
+        android:layout_marginTop="4dp" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -3,9 +3,10 @@
 
     <string name="app_name">U of M Group Finder</string>
     <string name="mainMenuText">Main Menu</string>
-    <string name="groupSearchButtonText">Group Search</string>
-    <string name="eventSearchButtonText">Event Search</string>
-    <string name="favoritesButtonText">Favorites</string>
+    <string name="findGroupsButtonText">Find Groups</string>
+    <string name="findEventsButtonText">Find Events</string>
+    <string name="subscriptionsButtonText">Subscriptions</string>
+    <string name="manageGroupsButtonText">Manage Groups</string>
     <string name="settingsButtonText">Settings</string>
     <string name="action_settings">Settings</string>
     <string name="test">TEST</string>
@@ -14,8 +15,10 @@
     <color name="lightGray">#bdbdbd</color>
     <color name="grayShadow">#7e7e7e</color>
     <color name="maroon">#800000</color>
+    <color name="gold">#ffe6c582</color>
     <color name="maroonShadow">#400000</color>
-    <color name="gold">#e6c582</color>
+    <color name="darkgold">#ffc2a262</color>
+    <color name="goldShadow">#ff816c41</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 

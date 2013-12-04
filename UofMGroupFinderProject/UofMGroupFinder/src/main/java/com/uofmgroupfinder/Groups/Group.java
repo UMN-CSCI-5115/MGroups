@@ -15,23 +15,39 @@ public class Group {
    private ArrayList<Activity>  groupActivities;
    private int numGroupMembers;
    private ArrayList<String> groupTags;
+   private groupTypes groupType;
 
-    public Group (String name, String description, ArrayList<Agent> members, ArrayList<String> tags){
+    public static enum groupTypes{
+        Any,
+        Computer,
+        Educational,
+        Language,
+        Professional,
+        Other,
+        Recreational,
+        Sports;
+    }
+
+
+    public Group (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, ArrayList<String> tags){
 
         this.groupName = name;
         this.groupDescription = description;
         this.groupMembers = members;
         this.numGroupMembers = 1;
         this.groupTags = tags;
+        this.groupType = incomingGroupType;
     }
 
 
-    public Group (String name, String description, ArrayList<Agent> members){//tags are optional
+    public Group (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType){//tags are optional
 
         this.groupName = name;
         this.groupDescription = description;
         this.groupMembers = members;
         this.numGroupMembers = 1;
+        this.groupType = incomingGroupType;
+
     }
 
 

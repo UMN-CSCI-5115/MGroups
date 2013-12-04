@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
                 //startActivityForResult(myIntent, 0);
             //}
         //});
-
+        Populate.populate();//Populate all fictitious backend data
     }
 
     public void gotoGroup(View view)

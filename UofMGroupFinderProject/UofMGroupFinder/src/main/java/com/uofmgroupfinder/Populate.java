@@ -14,6 +14,10 @@ import java.util.Date;
 
 public class Populate {
 
+    private static ArrayList<Activity> masterActivities = new ArrayList<Activity>();
+    private static ArrayList<Group> masterGroups = new ArrayList<Group>();
+
+
     public static void populate() {
     //Agents
     Agent Alice = new Agent();
@@ -94,6 +98,10 @@ public class Populate {
     ArrayList<String> group3Activities = new ArrayList<String>();
     group3Activities.add(activity3Name);
 
+        Group.groupTypes group1Type = Group.groupTypes.Sports;
+        Group.groupTypes group2Type = Group.groupTypes.Recreational;
+        Group.groupTypes group3Type = Group.groupTypes.Computer;
+
     String activity1Description = "It's a football game!";
     String activity2Description = "Basket weaving! Underwater!";
     String activity3Description = "Play games and eat pizza!";
@@ -116,32 +124,74 @@ public class Populate {
 
 
 
-
+        //Populate activities
     Activity activity1 = new Activity(start1, end1, activity1Name, activity1Description, activityHost1, activity1Tags);
     Activity activity2 = new Activity(start2, end2, activity2Name, activity2Description, activityHost2, activity2Tags);
     Activity activity3 = new Activity(start3, end3, activity3Name, activity3Description, activityHost3, activity3Tags);
 
-    Group group1 = new Group(groupName1, groupDescription1, group1Members, group1Tags);
-    Group group2 = new Group(groupName2, groupDescription2, group2Members, group2Tags);
-    Group group3 = new Group(groupName3, groupDescription3, group3Members, group3Tags);
-
-
         //Populate groups
+    Group group1 = new Group(groupName1, groupDescription1, group1Members, group1Type, group1Tags);
+    Group group2 = new Group(groupName2, groupDescription2, group2Members, group1Type, group2Tags);
+    Group group3 = new Group(groupName3, groupDescription3, group3Members, group1Type, group3Tags);
 
- //   Group (String name, String description, ArrayList<agent> members, ArrayList<activity> activities, ArrayList<String> tags){
-        //    public Activity(Date start, Date end, String title, String desc, String host, ArrayList<String> descriptors)
 
 
 
-        //Populate activities
+     //   Group (String name, String description, ArrayList<agent> members, ArrayList<activity> activities, ArrayList<String> tags){
+     //    public Activity(Date start, Date end, String title, String desc, String host, ArrayList<String> descriptors)
 
 
     //Populate Agent
 
-
-
-
 }
+
+
+    public static void addGroup(Group incomingGroup){
+
+        masterGroups.add(incomingGroup);
+
+    }
+
+    public static void removeGroup(Group groupToRemove){
+
+        for(Group group : masterGroups){
+
+            if (group.equals(groupToRemove)){
+                masterGroups.remove(group);
+            }
+        }
+    }
+
+    public static ArrayList<Group> searchGroups(String searchParams){
+
+        ArrayList<Group> listToReturn = new ArrayList<Group>();
+
+        //Search using each parameter
+        String[] params = searchParams.split(" ");
+
+
+        for (Group group : masterGroups){//Search each group
+
+            for (int i = 0; i < params.length; i++){//for each individual parameter in search string
+
+                if (group.getGroupName().contains(params[i])){//If the group name contains the parameter
+                    listToReturn.add(group);
+                }
+
+                for (String tag : group.getGroupTags()){//for each group tag of each group
+                    if (tag.contains(params[i])){//if the tag contains the parameter
+                        listToReturn.add(group);
+                    }
+                }
+            }
+        }
+    return listToReturn;
+    }
+
+
+
+
+
 
 
 

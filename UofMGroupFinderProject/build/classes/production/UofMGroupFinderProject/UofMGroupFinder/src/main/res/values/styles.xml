@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:background">@color/gold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="mActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/gold</item>
+        <item name="android:icon">@drawable/mgoldy</item>
+        <item name="android:titleTextStyle">@style/Theme.UofMGroupFinder.ActionBar.TextAppearance</item>
+    </style>
+
+    <style name="Theme.UofMGroupFinder.ActionBar.TextAppearance" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:textColor">@color/maroon</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">@color/maroonShadow</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">1</item>
+    </style>
+
+</resources>
+

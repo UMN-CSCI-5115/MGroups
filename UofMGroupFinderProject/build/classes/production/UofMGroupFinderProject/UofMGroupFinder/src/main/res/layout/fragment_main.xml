@@ -1,0 +1,115 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0px"
+    android:paddingRight="0px"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity$PlaceholderFragment"
+    android:focusable="false">
+
+    <!--<TextView
+        android:id="@+id/menuText"
+        android:text="@string/mainMenuText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/gold"/> -->
+
+    <Button
+        android:id="@+id/findGroupsButton"
+        android:layout_width="500dp"
+        android:layout_height="85dp"
+        android:text="@string/findGroupsButtonText"
+        android:onClick="gotoGroup"
+        android:background="@color/darkgold"
+        android:clickable="true"
+        android:shadowColor="@color/goldShadow"
+        android:drawableEnd="@color/goldShadow"
+        android:enabled="true"
+        android:layout_marginBottom="1dp"
+        android:layout_above="@+id/eventSearchButton"
+        android:textSize="30dp"
+        android:gravity="left|center_vertical"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/mgoldy"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:id="@+id/eventSearchButton"
+        android:layout_width="500dp"
+        android:layout_height="85dp"
+        android:text="@string/findEventsButtonText"
+        android:onClick="gotoEvent"
+        android:background="@color/darkgold"
+        android:layout_above="@+id/SubscriptionsButton"
+        android:layout_marginBottom="1dp"
+        android:textSize="30dp"
+        android:gravity="left|center_vertical"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/mgoldy"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:id="@+id/SubscriptionsButton"
+        android:layout_width="500dp"
+        android:layout_height="85dp"
+        android:text="@string/subscriptionsButtonText"
+        android:onClick="gotoManagement"
+        android:layout_marginBottom="1dp"
+        android:background="@color/darkgold"
+        android:layout_above="@+id/ManageGroupsButton"
+        android:textSize="30dp"
+        android:gravity="left|center_vertical"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/mgoldy"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:id="@+id/ManageGroupsButton"
+        android:layout_width="500dp"
+        android:layout_height="85dp"
+        android:text="@string/manageGroupsButtonText"
+        android:onClick="gotoManagement"
+        android:layout_marginBottom="1dp"
+        android:background="@color/darkgold"
+        android:layout_above="@+id/settingsButton"
+        android:textSize="30dp"
+        android:gravity="left|center_vertical"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/mgoldy"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:layout_width="500dp"
+        android:layout_height="85dp"
+        android:text="@string/settingsButtonText"
+        android:textSize="30dp"
+        android:gravity="left|center_vertical"
+        android:drawablePadding="20dp"
+        android:background="@color/darkgold"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="1dp"
+        android:paddingLeft="20dp"
+        android:layout_alignParentLeft="true"
+        android:drawableLeft="@drawable/mgoldy"
+        android:id="@+id/settingsButton" />
+
+    <SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/groupSearchButton"
+        android:layout_alignRight="@+id/groupSearchButton"
+        android:queryHint="@string/searchPrompt"
+        android:visibility="visible"
+        android:paddingLeft="45dp"
+        android:showAsAction="always"/>
+
+</RelativeLayout>

@@ -4,8 +4,13 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="useAutoImport" value="true" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="C:\Users" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle/wrapper" />
+        <option name="gradleHome" value="$USER_HOME$/gradle/wrapper" />
       </GradleProjectSettings>
     </option>
   </component>

@@ -3,6 +3,7 @@ package com.uofmgroupfinder;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,6 +24,20 @@ public class GroupActivity extends Activity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+        //code is from http://stackoverflow.com/questions/12750013/actionbar-logo-centered-and-action-items-on-sides
+        // used to give clean actionbar
+        ActionBar ab = getActionBar();
+        ab.setDisplayShowCustomEnabled(true);
+        ab.setDisplayShowTitleEnabled(false);
+        ab.setIcon(R.drawable.mgoldy);
+        LayoutInflater inflator = (LayoutInflater) this
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflator.inflate(R.layout.title_bar, null);
+
+        ab.setCustomView(v);
+        ab.setDisplayHomeAsUpEnabled(true);
+
     }
 
 

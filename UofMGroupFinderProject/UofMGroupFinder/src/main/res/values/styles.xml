@@ -4,21 +4,27 @@
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:background">@color/gold</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:actionBarStyle">@style/mActionBar</item>
+        <item name="android:actionBarTabTextStyle">@style/TabTextStyle</item>
+        <item name="android:actionMenuTextColor">@color/gold</item>
     </style>
 
     <style name="mActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@color/gold</item>
+        <item name="android:background">@color/maroon</item>
         <item name="android:icon">@drawable/mgoldy</item>
-        <item name="android:titleTextStyle">@style/Theme.UofMGroupFinder.ActionBar.TextAppearance</item>
+        <item name="android:titleTextStyle">@style/TitleTextStyle</item>
     </style>
 
-    <style name="Theme.UofMGroupFinder.ActionBar.TextAppearance" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:textColor">@color/maroon</item>
-        <item name="android:textSize">20dp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:shadowColor">@color/maroonShadow</item>
-        <item name="android:shadowRadius">1</item>
-        <item name="android:shadowDy">1</item>
+    <!-- action bar title text -->
+    <style name="TitleTextStyle"
+        parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- action bar tab text -->
+    <style name="TabTextStyle"
+        parent="@style/Widget.AppCompat.ActionBar.TabText">
+        <item name="android:textColor">@color/gold</item>
     </style>
 
 </resources>

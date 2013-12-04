@@ -2,7 +2,10 @@ package com.uofmgroupfinder;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -10,8 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import com.uofmgroupfinder.*;
-public class MainActivity extends Activity {
+
+public class MainActivity extends Activity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,38 +27,23 @@ public class MainActivity extends Activity {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
-        }
+        }//end if
 
-        Button eventBtn = (Button) findViewById(R.id.eventSearchButton);
-        //eventBtn.setOnClickListener(new View.OnClickListener() {
-            //public void onClick(View v){
-                //Intent i=new Intent( MainActivity.this, EventActivity.class);
-                //startActivity(i);
-                //setResult(RESULT_OK, i);
-                //finish();
-                //Intent myIntent = new Intent(v.getContext(), EventActivity.class);
-                //startActivityForResult(myIntent, 0);
-            //}
-        //});
+
+        //code is from http://stackoverflow.com/questions/12750013/actionbar-logo-centered-and-action-items-on-sides
+        // used to give clean actionbar
+        ActionBar ab = getActionBar();
+        ab.setDisplayShowCustomEnabled(true);
+        ab.setDisplayShowTitleEnabled(false);
+        ab.setIcon(R.drawable.mgoldy);
+        LayoutInflater inflator = (LayoutInflater) this
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflator.inflate(R.layout.title_bar, null);
+
+        ab.setCustomView(v);
+        ab.setDisplayHomeAsUpEnabled(true);
+
         Populate.populate();//Populate all fictitious backend data
-    }
-
-    public void gotoGroup(View view)
-    {
-        Intent intent = new Intent(MainActivity.this, GroupActivity.class);
-        startActivity(intent);
-    }
-
-    public void gotoEvent(View view)
-    {
-        Intent intent = new Intent(MainActivity.this, EventActivity.class);
-        startActivity(intent);
-    }
-
-    public void gotoManagement(View view)
-    {
-        Intent intent = new Intent(MainActivity.this, ManagementActivity.class);
-        startActivity(intent);
     }
 
     @Override
@@ -80,8 +70,8 @@ public class MainActivity extends Activity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
-        //Button btn;
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+        Button btn;
 
         public PlaceholderFragment() {
         }
@@ -89,6 +79,18 @@ public class MainActivity extends Activity {
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
+
+            btn = (Button) getActivity().findViewById(R.id.findGroupsButton);
+            btn.setOnClickListener(this);
+
+            btn = (Button) getActivity().findViewById(R.id.eventSearchButton);
+            btn.setOnClickListener(this);
+
+            btn = (Button) getActivity().findViewById(R.id.SubscriptionsButton);
+            btn.setOnClickListener(this);
+
+            btn = (Button) getActivity().findViewById(R.id.settingsButton);
+            btn.setOnClickListener(this);
         }
 
         @Override
@@ -96,10 +98,42 @@ public class MainActivity extends Activity {
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-                return rootView;
-        }
+            return rootView;
+        }//end onCreateView
 
-    }
+        // Have to implement with the OnClickListner
+        // onClick is called when a view has been clicked.
+        @Override
+        public void onClick(View v) { // Parameter v stands for the view that was clicked.
+
+            Intent intent = null;
+
+            // getId() returns this view's identifier.
+            switch (v.getId()) {
+                case R.id.findGroupsButton:
+                    intent = new Intent(getActivity(), GroupActivity.class);
+                    break;
+                case R.id.eventSearchButton:
+                    intent = new Intent(getActivity(), EventActivity.class);
+                    break;
+                case R.id.SubscriptionsButton:
+                    intent = new Intent(getActivity(), ManagementActivity.class);
+                    break;
+                case R.id.ManageGroupsButton:
+                    intent = new Intent(getActivity(), ManagementActivity.class);
+                    break;
+                case R.id.settingsButton:
+                    intent = new Intent(getActivity(), ManagementActivity.class);
+                    break;
+                default:
+                    break;
+            }//end switch
+
+            if(intent != null)
+                startActivity(intent);
+        }//end on click
+
+    }//end PlaceholderFragment class
 
     /**
      * A placeholder fragment containing a simple view.

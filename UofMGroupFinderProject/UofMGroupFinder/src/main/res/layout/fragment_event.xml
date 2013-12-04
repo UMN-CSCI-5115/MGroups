@@ -20,6 +20,7 @@
         android:layout_alignParentRight="true"
         android:queryHint="@string/searchPrompt" />
 
+    <!--
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,5 +31,5 @@
         android:background="@color/white"
         android:entries="@array/event_arrays"
         android:prompt="@string/event_prompt"  />
-
+    -->
 </RelativeLayout>

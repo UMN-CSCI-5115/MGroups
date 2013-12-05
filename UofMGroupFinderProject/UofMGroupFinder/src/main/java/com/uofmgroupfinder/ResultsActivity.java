@@ -4,11 +4,15 @@ package com.uofmgroupfinder;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.uofmgroupfinder.GlobalData;
+import com.uofmgroupfinder.R;
 import com.uofmgroupfinder.Groups.Group;
 
 public class ResultsActivity extends Activity {
@@ -46,6 +50,14 @@ public class ResultsActivity extends Activity {
 		getMenuInflater().inflate(R.menu.results, menu);
 		return true;
 	}
+	
+	 @Override
+     public View onCreateView(LayoutInflater inflater, ViewGroup container,
+             Bundle savedInstanceState) {
+         View rootView = inflater.inflate(R.layout.fragment_results, container, false);
+
+         return rootView;
+     }//end onCreateView
 
 
 	

@@ -147,8 +147,8 @@ public class MainActivity extends Activity  {
      
         @Override
         public boolean onQueryTextSubmit (String query) {
-        	Intent i = new Intent(getActivity(), SearchResults.class);
-        	i.putExtra("searchQuery","query");
+        	Intent i = new Intent(getActivity(), ResultsActivity.class);
+        	i.putExtra("searchQuery",query);
         	i.putExtra("searchType","any");
         	i.putExtra("searchCat", "none");
         	startActivity(i);

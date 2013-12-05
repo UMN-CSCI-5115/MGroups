@@ -4,6 +4,7 @@ package com.uofmgroupfinder;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -36,7 +37,7 @@ public class ResultsActivity extends Activity {
             Group group = searchForData(searchQuery, searchType);
             LinearLayout lView = (LinearLayout)findViewById(R.id.resultsView);
             TextView myText = null;
-            myText.setText(group.getGroupName());
+            myText.setText("LOL");
             lView.addView(myText);
 		}
 		
@@ -51,13 +52,21 @@ public class ResultsActivity extends Activity {
 		return true;
 	}
 	
-	 @Override
-     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-             Bundle savedInstanceState) {
-         View rootView = inflater.inflate(R.layout.fragment_results, container, false);
+	 /**
+     * A placeholder fragment containing a simple view.
+     */
+    public static class PlaceholderFragment extends Fragment {
 
-         return rootView;
-     }//end onCreateView
+        public PlaceholderFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_resultsgroup, container, false);
+            return rootView;
+        }
+    }
 
 
 	

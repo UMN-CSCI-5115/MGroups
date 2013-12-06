@@ -25,5 +25,7 @@
         <item name="android:textColor">@color/gold</item>
     </style>
 
+    <style name="grouptheme"></style>
+
 </resources>
 

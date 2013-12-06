@@ -28,7 +28,6 @@ import com.uofmgroupfinder.GlobalData;
 import com.uofmgroupfinder.R;
 import com.uofmgroupfinder.Agent.Agent;
 import com.uofmgroupfinder.Groups.Group;
-import com.uofmgroupfinder.Activities.Activity;
 
 
 public class ResultsActivity extends ListActivity {
@@ -59,7 +58,7 @@ public class ResultsActivity extends ListActivity {
 		com.uofmgroupfinder.Groups.Group gr2 = new Group( "Yolo", "student group for computer geeks", members, groupTypes.Computer, tags);
 		com.uofmgroupfinder.Groups.Group gr3 = new Group( "swag", "student group for computer geeks", members, groupTypes.Computer, tags);
 		
-		com.uofmgroupfinder.Activities.Activity ac1 = new Activity(startDate,endDate,"ice cream social","acm room","acm");
+		com.uofmgroupfinder.Activities.Activity ac1 = new com.uofmgroupfinder.Activities.Activity(startDate,endDate,"ice cream social","acm room","acm");
 		
 		
 		listToSearch = new ArrayList<com.uofmgroupfinder.Groups.Group>();
@@ -106,10 +105,10 @@ public class ResultsActivity extends ListActivity {
 		    }
 			
 			if(activity != null){
-				eventListToDisplay = new ArrayList<Activity>();
+				eventListToDisplay = new ArrayList<com.uofmgroupfinder.Activities.Activity>();
 				eventListToDisplay.add(activity);
 				this.m_eventAdapter = new EventAdapter(this,R.layout.row, eventListToDisplay);
-				setListAdapter(this.m_eventAdapter)
+				setListAdapter(this.m_eventAdapter);
 				
 			}
 		}
@@ -213,7 +212,7 @@ public class ResultsActivity extends ListActivity {
         }
 	}
 	
-	private class EventAdapter extends ArrayAdapter<Group> {
+	private class EventAdapter extends ArrayAdapter<com.uofmgroupfinder.Activities.Activity> {
 
         private ArrayList<com.uofmgroupfinder.Activities.Activity> activities;
 
@@ -236,7 +235,7 @@ public class ResultsActivity extends ListActivity {
                         if (tt != null) {
                               tt.setText("Name: "+a.getEventTitle());                            }
                         if(bt != null){
-                              bt.setText("Status: "+ a.getStartDate());
+                              bt.setText("Status: "+ a.getStart());
                         }
                 }
                 return v;

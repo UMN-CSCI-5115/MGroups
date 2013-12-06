@@ -56,6 +56,14 @@
                 android:value="MainActivity" />
         </activity>
         <activity
+            android:name="com.uofmgroupfinder.ResultsInfoActivity"
+            android:label="@string/title_activity_result"
+            android:parentActivityName="ResultsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ResultsActivity" />
+        </activity>
+        <activity
             android:name="com.uofmgroupfinder.SearchResults"
             android:label="@string/title_activity_search_results"
             android:parentActivityName="MainActivity" >

@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.uofmgroupfinder.GlobalData;
@@ -127,8 +128,8 @@ public class ResultsActivity extends ListActivity {
 	protected void onListItemClick(ListView l,View v,int position,long id)
 	{
 		Intent intent = null;
-		intent = new Intent(getActivity(), ResultsInfoActivity.class);
-		intent.putExtra("ListView",l);
+		intent = new Intent(this, ResultsInfoActivity.class);
+		//intent.putExtra("ListView",l);
     	intent.putExtra("position",position);
     	intent.putExtra("id", id);
 		startActivity(intent);

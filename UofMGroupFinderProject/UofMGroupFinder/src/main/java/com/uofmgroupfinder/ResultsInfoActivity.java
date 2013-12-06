@@ -1,6 +1,6 @@
 package com.uofmgroupfinder;
 
-import ResultsGroup.PlaceholderFragment;
+import com.uofmgroupfinder.ResultsGroup.PlaceholderFragment;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;

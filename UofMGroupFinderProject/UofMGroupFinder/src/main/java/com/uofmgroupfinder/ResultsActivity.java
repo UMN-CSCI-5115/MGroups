@@ -71,6 +71,7 @@ public class ResultsActivity extends ListActivity {
 		    }
             
 		    if(group != null){
+                listToDisplay = new ArrayList<Group>();
 		    	listToDisplay.add(group);
 		    	this.m_adapter = new GroupAdapter(this, R.layout.row, listToDisplay);
 		    	setListAdapter(this.m_adapter);

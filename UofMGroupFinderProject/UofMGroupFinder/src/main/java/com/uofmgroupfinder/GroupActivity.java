@@ -114,9 +114,9 @@ public class GroupActivity extends Activity {
         }
      
         @Override
-        public boolean onQueryTextSubmit (String query) {
+        public boolean onQueryTextSubmit(String query) {
         	Intent i = new Intent(getActivity(), ResultsActivity.class);
-        	i.putExtra("searchQuery","query");
+        	i.putExtra("searchQuery",query);
         	i.putExtra("searchType","group");
         	i.putExtra("searchCat", "none");
         	startActivity(i);

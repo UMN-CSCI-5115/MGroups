@@ -4,12 +4,15 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.SearchView;
 
 public class ManagementActivity extends Activity {
 
@@ -60,20 +63,60 @@ public class ManagementActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener, SearchView.OnQueryTextListener {
+        Button btn;
 
         public PlaceholderFragment() {
         }
 
         @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+
+            btn = (Button) getActivity().findViewById(R.id.new_group_button);
+            btn.setOnClickListener(this);
+
+        }//end onActivityCreated
+
+        @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_management, container, false);
             return rootView;
         }
+
+        // Have to implement with the OnClickListner
+        // onClick is called when a view has been clicked.
+        @Override
+        public void onClick(View v) { // Parameter v stands for the view that was clicked.
+
+            Intent intent = null;
+
+            // getId() returns this view's identifier.
+            switch (v.getId()) {
+                case R.id.new_group_button:
+                    intent = new Intent(getActivity(), NewGroupActivity.class);
+                    break;
+                default:
+                    break;
+            }//end switch
+
+            if(intent != null)
+                startActivity(intent);
+        }//end on click
+
+        // The following callbacks are called for the SearchView.OnQueryChangeListener
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            return true;
+        }
+
+        @Override
+        public boolean onQueryTextSubmit (String query) {
+            return true;
+
+        }//end PlaceholderFragment class
+
     }
 
 }

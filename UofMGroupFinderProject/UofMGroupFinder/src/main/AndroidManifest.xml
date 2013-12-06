@@ -87,7 +87,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SearchResults" />
         </activity>
-        <!--<activity android:label="@string/title_activity_results" android:name="com.uofmgroupfinder.ResultsActivity"> </activity>-->
+        <!-- <activity android:label="@string/title_activity_results" android:name="com.uofmgroupfinder.ResultsActivity"> </activity> -->
+        <activity
+            android:name="com.uofmgroupfinder.NewGroupActivity"
+            android:label="@string/title_activity_new_group"
+            android:parentActivityName="ManagementActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ManagementActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -91,6 +91,9 @@ public class MainActivity extends Activity  {
             btn = (Button) getActivity().findViewById(R.id.SubscriptionsButton);
             btn.setOnClickListener(this);
 
+            btn = (Button) getActivity().findViewById(R.id.ManageGroupsButton);
+            btn.setOnClickListener(this);
+
             btn = (Button) getActivity().findViewById(R.id.settingsButton);
             btn.setOnClickListener(this);
             
@@ -129,7 +132,7 @@ public class MainActivity extends Activity  {
                     intent = new Intent(getActivity(), ManagementActivity.class);
                     break;
                 case R.id.settingsButton:
-                    intent = new Intent(getActivity(), ManagementActivity.class);
+                    intent = new Intent(getActivity(), SettingsActivity.class);
                     break;
                 default:
                     break;

@@ -133,7 +133,6 @@ public class ResultsActivity extends ListActivity {
     	intent.putExtra("position",position);
     	intent.putExtra("id", id);
 		startActivity(intent);
-		
 	}
 	
 	private Runnable returnRes = new Runnable() {

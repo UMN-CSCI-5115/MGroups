@@ -28,7 +28,7 @@ public class ResultsActivity extends ListActivity {
 	private com.uofmgroupfinder.Groups.Group group;
 	private List<com.uofmgroupfinder.Groups.Group> listToDisplay;
 	private List<com.uofmgroupfinder.Groups.Group> listToSearch;
-	private OrderAdapter m_adapter;
+	private GroupAdapter m_adapter;
 	private Runnable viewOrders;
 	
 	@Override
@@ -132,7 +132,7 @@ public class ResultsActivity extends ListActivity {
         }
       };
 	
-	private class GroupAdapter extends ArrayAdapter<Order> {
+	private class GroupAdapter extends ArrayAdapter<com.uofmgroupfinder.Groups.Group> {
 
         private ArrayList<com.uofmgroupfinder.Groups.Group> groups;
 

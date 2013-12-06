@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="pref_android_notify"
+        android:title="Enable Android Notifications"
+        android:summary="Enable to recieve android notifications for subscribed groups or events"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="pref_email_notify"
+        android:title="Enable Email Notifications"
+        android:summary="Enable to recieve email notifications for subscribed groups or events"
+        android:defaultValue="true" />
+
+</PreferenceScreen>

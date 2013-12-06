@@ -1,0 +1,39 @@
+<!--<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceFragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+
+        <CheckBox
+            android:id="@+id/prefCheckBox"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Enable Android Notifications" />
+
+        <CheckBox
+            android:id="@+id/prefCheckBox"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Enable Email Notifications" />
+
+        <CheckBox
+            android:id="@+id/prefCheckBox"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Enable Android Notifications" />
+
+        <TextView
+            android:id="@+id/prefEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+<!--</PreferenceFragment>-->

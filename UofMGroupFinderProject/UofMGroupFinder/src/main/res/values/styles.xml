@@ -16,14 +16,12 @@
     </style>
 
     <!-- action bar title text -->
-    <style name="TitleTextStyle"
-        parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+    <style name="TitleTextStyle">
         <item name="android:textColor">@color/black</item>
     </style>
 
     <!-- action bar tab text -->
-    <style name="TabTextStyle"
-        parent="@style/Widget.AppCompat.ActionBar.TabText">
+    <style name="TabTextStyle">
         <item name="android:textColor">@color/gold</item>
     </style>
 

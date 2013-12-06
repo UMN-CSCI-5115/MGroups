@@ -5,7 +5,9 @@ package com.uofmgroupfinder;
 import java.util.ArrayList;
 import java.util.List;
 
-import Group.groupTypes;
+import com.uofmgroupfinder.Groups.Group.groupTypes;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ListActivity;
@@ -15,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +29,7 @@ import com.uofmgroupfinder.Groups.Group;
 public class ResultsActivity extends ListActivity {
 
 	private com.uofmgroupfinder.Groups.Group group;
-	private List<com.uofmgroupfinder.Groups.Group> listToDisplay;
+	private ArrayList<com.uofmgroupfinder.Groups.Group> listToDisplay;
 	private List<com.uofmgroupfinder.Groups.Group> listToSearch;
 	private GroupAdapter m_adapter;
 	private Runnable viewOrders;
@@ -37,13 +40,13 @@ public class ResultsActivity extends ListActivity {
 		setContentView(R.layout.activity_results);
 	    
 		com.uofmgroupfinder.Agent.Agent agent = new Agent();
-		List<Agent> members = new ArrayList<Agent>();
+		ArrayList<Agent> members = new ArrayList<Agent>();
 		members.add(agent);
-		List<String> tags = new ArrayList<String>();
+		ArrayList<String> tags = new ArrayList<String>();
 		
-		com.uofmgroupfinder.Groups.Group gr1 = new Group( "acm", "student group for computer geeks", members, Computer, tags);
-		com.uofmgroupfinder.Groups.Group gr2 = new Group( "Yolo", "student group for computer geeks", members, Computer, tags);
-		com.uofmgroupfinder.Groups.Group gr3 = new Group( "swag", "student group for computer geeks", members, Computer, tags);
+		com.uofmgroupfinder.Groups.Group gr1 = new Group( "acm", "student group for computer geeks", members, groupTypes.Computer, tags);
+		com.uofmgroupfinder.Groups.Group gr2 = new Group( "Yolo", "student group for computer geeks", members, groupTypes.Computer, tags);
+		com.uofmgroupfinder.Groups.Group gr3 = new Group( "swag", "student group for computer geeks", members, groupTypes.Computer, tags);
 		
 		
 		listToSearch = new ArrayList<com.uofmgroupfinder.Groups.Group>();
@@ -87,7 +90,7 @@ public class ResultsActivity extends ListActivity {
 	
 	 /**
      * A placeholder fragment containing a simple view.
-     */
+     *
     public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
@@ -99,7 +102,7 @@ public class ResultsActivity extends ListActivity {
             View rootView = inflater.inflate(R.layout.fragment_result, container, false);
             return rootView;
         }
-    }
+    }*/
 
 
 	
@@ -127,18 +130,17 @@ public class ResultsActivity extends ListActivity {
                 for(int i=0;i<listToDisplay.size();i++)
                 m_adapter.add(listToDisplay.get(i));
             }
-            m_ProgressDialog.dismiss();
             m_adapter.notifyDataSetChanged();
         }
       };
 	
-	private class GroupAdapter extends ArrayAdapter<com.uofmgroupfinder.Groups.Group> {
+	private class GroupAdapter extends ArrayAdapter<Group> {
 
         private ArrayList<com.uofmgroupfinder.Groups.Group> groups;
 
         public GroupAdapter(Context context, int textViewResourceId, ArrayList<com.uofmgroupfinder.Groups.Group> groups) {
                 super(context, textViewResourceId, groups);
-                this.items = items;
+                this.groups = groups;
         }
 
         @Override
@@ -149,7 +151,7 @@ public class ResultsActivity extends ListActivity {
                     v = vi.inflate(R.layout.row, null);
                 }
                 com.uofmgroupfinder.Groups.Group g = groups.get(position);
-                if (o != null) {
+                if (g != null) {
                         TextView tt = (TextView) v.findViewById(R.id.toptext);
                         TextView bt = (TextView) v.findViewById(R.id.bottomtext);
                         if (tt != null) {

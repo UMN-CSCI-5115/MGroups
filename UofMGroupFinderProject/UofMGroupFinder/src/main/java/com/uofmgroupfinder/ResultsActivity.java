@@ -8,6 +8,7 @@ import java.util.List;
 import com.uofmgroupfinder.Groups.Group.groupTypes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ListActivity;
@@ -120,6 +121,18 @@ public class ResultsActivity extends ListActivity {
                 }
         return group;
 
+	}
+	
+	@Override
+	protected void onListItemClick(ListView l,View v,int position,long id)
+	{
+		Intent intent = null;
+		intent = new Intent(getActivity(), ResultsInfoActivity.class);
+		intent.putExtra("ListView",l);
+    	intent.putExtra("position",position);
+    	intent.putExtra("id", id);
+		startActivity(intent);
+		
 	}
 	
 	private Runnable returnRes = new Runnable() {

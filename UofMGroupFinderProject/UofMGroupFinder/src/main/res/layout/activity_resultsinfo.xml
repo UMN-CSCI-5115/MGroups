@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/groupName"
+        android:text="@string/groupName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
+        android:layout_marginBottom="50sp"
+        android:layout_centerHorizontal="true"
+        android:textSize="36sp"
+        android:background="@color/gold"
+    />
+    
+      
+    <TextView
+        android:id="@+id/groupCatergory"
+        android:text="@string/groupCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50sp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/gold"
+    />
+    
+      
+    <TextView
+        android:id="@+id/groupDescription"
+        android:text="@string/groupDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50sp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/gold"
+    />
+    
+      
+    <TextView
+        android:id="@+id/upComingEvents"
+        android:text="@string/upComingEvents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50sp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/gold"
+    />
+    
+    <Button
+        android:id="@+id/SubscribeButton"
+        android:layout_width="500dp"
+        android:layout_height="85dp"
+        android:text="@string/SubscribeText"
+        android:background="@color/darkgold"
+        android:clickable="true"
+        android:shadowColor="@color/goldShadow"
+        android:drawableEnd="@color/goldShadow"
+        android:enabled="true"
+        android:textSize="30sp"
+        android:gravity="center_vertical"
+        android:drawablePadding="20dp"
+        android:layout_alignParentRight="true" />
+    
+    
+
+</LinearLayout>

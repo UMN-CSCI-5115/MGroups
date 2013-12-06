@@ -13,7 +13,11 @@
     <string name="eventText">A test</string>
 	<string name="title_activity_results">FILLER TEXT</string>
 	<string name="main_no_items">No groups to display</string>
-	
+	<string name="groupName">ACM</string>
+	<string name="groupDescription">Description - Student group for students interested in technology</string>
+	<string name="groupCategory">Category - Computer</string>
+	<string name="upComingEvents">upComingEvent - Hackethon</string>
+	<string name="SubscribeText">Subscribe</string>
 	
     <color name="lightGray">#bdbdbd</color>
     <color name="grayShadow">#7e7e7e</color>

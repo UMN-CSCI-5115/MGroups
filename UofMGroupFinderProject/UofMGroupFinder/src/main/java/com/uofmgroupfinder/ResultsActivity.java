@@ -4,6 +4,7 @@ package com.uofmgroupfinder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import com.uofmgroupfinder.Groups.Group.groupTypes;
 
@@ -26,13 +27,18 @@ import com.uofmgroupfinder.GlobalData;
 import com.uofmgroupfinder.R;
 import com.uofmgroupfinder.Agent.Agent;
 import com.uofmgroupfinder.Groups.Group;
+import com.uofmgroupfinder.Activities.Activity;
+
 
 public class ResultsActivity extends ListActivity {
 
 	private com.uofmgroupfinder.Groups.Group group;
 	private ArrayList<com.uofmgroupfinder.Groups.Group> listToDisplay;
+	private ArrayList<com.uofmgroupfinder.Activities.Activity> eventListToDisplay;
 	private List<com.uofmgroupfinder.Groups.Group> listToSearch;
+	private ArrayList<com.uofmgroupfinder.Activities.Activity> eventListToSearch;
 	private GroupAdapter m_adapter;
+	private EventAdapter m_eventAdapter;
 	private Runnable viewOrders;
 	
 	@Override
@@ -45,9 +51,14 @@ public class ResultsActivity extends ListActivity {
 		members.add(agent);
 		ArrayList<String> tags = new ArrayList<String>();
 		
+		Date startDate = new Date(11,11,11);
+		Date endDate = new Date(11,11,11);
+		
 		com.uofmgroupfinder.Groups.Group gr1 = new Group( "acm", "student group for computer geeks", members, groupTypes.Computer, tags);
 		com.uofmgroupfinder.Groups.Group gr2 = new Group( "Yolo", "student group for computer geeks", members, groupTypes.Computer, tags);
 		com.uofmgroupfinder.Groups.Group gr3 = new Group( "swag", "student group for computer geeks", members, groupTypes.Computer, tags);
+		
+		com.uofmgroupfinder.Activities.Activity ac1 = new Activity(startDate,endDate,"ice cream social","acm room","acm");
 		
 		
 		listToSearch = new ArrayList<com.uofmgroupfinder.Groups.Group>();
@@ -55,13 +66,17 @@ public class ResultsActivity extends ListActivity {
 		listToSearch.add(gr2);
 		listToSearch.add(gr3);
 		
+		eventListToSearch = new ArrayList<com.uofmgroupfinder.Activities.Activity>();
+		eventListToSearch.add(ac1);
+		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 		    String searchQuery = extras.getString("searchQuery");
 		    String searchType = extras.getString("searchType");
 		    String searchCategory = extras.getString("searchCat");
 		    Toast.makeText(this, "Searching for: " + searchQuery + "...", Toast.LENGTH_SHORT).show();
-
+		if(searchType.equals("group"))
+		{
 		    com.uofmgroupfinder.Groups.Group group = null;
 		    for(int i=0; i<listToSearch.size();i++)
 		    {
@@ -77,6 +92,26 @@ public class ResultsActivity extends ListActivity {
 		    	this.m_adapter = new GroupAdapter(this, R.layout.row, listToDisplay);
 		    	setListAdapter(this.m_adapter);
 		    }
+		}
+		if(searchType.equals("event"))
+		{
+			com.uofmgroupfinder.Activities.Activity activity = null;
+			for(int i=0; i<eventListToSearch.size();i++)
+		    {
+		    	if(searchQuery.equals(eventListToSearch.get(i).getEventTitle()))
+		    	{
+		    		activity = eventListToSearch.get(i);
+		    	}
+		    }
+			
+			if(activity != null){
+				eventListToDisplay = new ArrayList<Activity>();
+				eventListToDisplay.add(activity);
+				this.m_eventAdapter = new EventAdapter(this,R.layout.row, eventListToDisplay);
+				setListAdapter(this.m_eventAdapter)
+				
+			}
+		}
 		}
 		
 
@@ -172,6 +207,36 @@ public class ResultsActivity extends ListActivity {
                               tt.setText("Name: "+g.getGroupName());                            }
                         if(bt != null){
                               bt.setText("Status: "+ g.getGroupDescription());
+                        }
+                }
+                return v;
+        }
+	}
+	
+	private class EventAdapter extends ArrayAdapter<Group> {
+
+        private ArrayList<com.uofmgroupfinder.Activities.Activity> activities;
+
+        public EventAdapter(Context context, int textViewResourceId, ArrayList<com.uofmgroupfinder.Activities.Activity> activities) {
+                super(context, textViewResourceId, activities);
+                this.activities = activities;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+                View v = convertView;
+                if (v == null) {
+                    LayoutInflater vi = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    v = vi.inflate(R.layout.row, null);
+                }
+                com.uofmgroupfinder.Activities.Activity a = activities.get(position);
+                if (a != null) {
+                        TextView tt = (TextView) v.findViewById(R.id.toptext);
+                        TextView bt = (TextView) v.findViewById(R.id.bottomtext);
+                        if (tt != null) {
+                              tt.setText("Name: "+a.getEventTitle());                            }
+                        if(bt != null){
+                              bt.setText("Status: "+ a.getStartDate());
                         }
                 }
                 return v;

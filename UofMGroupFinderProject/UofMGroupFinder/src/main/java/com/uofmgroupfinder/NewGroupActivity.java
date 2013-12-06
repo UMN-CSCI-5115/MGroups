@@ -59,6 +59,7 @@ public class NewGroupActivity extends Activity {
 
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
         Button btn;
+        EditText edtxGroupName;
         EditText edtx;
 
         public PlaceholderFragment() {
@@ -74,8 +75,8 @@ public class NewGroupActivity extends Activity {
             btn = (Button) getActivity().findViewById(R.id.ok_button);
             btn.setOnClickListener(this);
 
-            edtx = (EditText) getActivity().findViewById(R.id.editText);
-            edtx.setText("");
+            edtxGroupName = (EditText) getActivity().findViewById(R.id.editText);
+            edtxGroupName.setText("");
 
             edtx = (EditText) getActivity().findViewById(R.id.editText2);
             edtx.setText("");
@@ -109,27 +110,24 @@ public class NewGroupActivity extends Activity {
             // getId() returns this view's identifier.
             switch (v.getId()) {
                 case R.id.ok_button:
-                   /* AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder();
+                    String strMsg = String.format("Your group ", edtxGroupName.getText().toString());
+                    strMsg = String.format(strMsg, " was created.");
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
 
                     // set title
                     alertDialogBuilder.setTitle("Group Added");
 
                     // set dialog message
                     alertDialogBuilder
-                            .setMessage("Your Group ")
+                            .setMessage(strMsg)
                             .setCancelable(false)
-                            .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,int id) {
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
                                     // if this button is clicked, close
                                     // current activity
-                                    MainActivity.this.finish();
-                                }
-                            })
-                            .setNegativeButton("No",new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,int id) {
-                                    // if this button is clicked, just close
-                                    // the dialog box and do nothing
-                                    dialog.cancel();
+                                    Intent intent = new Intent(getActivity(), NewGroupActivity.class);
+                                    startActivity(intent);
+                                    getActivity().finish();
                                 }
                             });
 
@@ -138,10 +136,6 @@ public class NewGroupActivity extends Activity {
 
                     // show it
                     alertDialog.show();
-                    */
-
-                    intent = new Intent(getActivity(), NewGroupActivity.class);
-                    startActivity(intent);
                     break;
                 case R.id.cancel_button:
                     intent = new Intent(getActivity(), ManagementActivity.class);

@@ -11,10 +11,11 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@android:id/list"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="108dp" />
+
 
     <Button
         android:layout_width="wrap_content"
@@ -24,6 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/listView"
         android:layout_marginTop="43dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginRight="15dp"/>
 
     <TextView

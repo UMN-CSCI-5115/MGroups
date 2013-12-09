@@ -9,14 +9,15 @@ import java.util.ArrayList;
 
 public class Group {
 
-   private String groupName;
-   private String groupDescription;
-   private ArrayList<Agent> groupMembers;
-   private ArrayList<Activity>  groupActivities;
-   private int numGroupMembers;
-   private ArrayList<String> groupTags;
-   private groupTypes groupType;
-   private boolean subscribed;
+    private String groupName;
+    private String groupDescription;
+    private ArrayList<Agent> groupMembers;
+    private ArrayList<Activity>  groupActivities;
+    private int numGroupMembers;
+    private ArrayList<String> groupTags;
+    private groupTypes groupType;
+    public boolean subscribed;
+    public boolean managed;
 
     public static enum groupTypes{
         Any,
@@ -39,6 +40,7 @@ public class Group {
         this.groupTags = tags;
         this.groupType = incomingGroupType;
         this.subscribed = false;
+        this.managed = false;
     }
 
 
@@ -50,10 +52,11 @@ public class Group {
         this.numGroupMembers = 1;
         this.groupType = incomingGroupType;
         this.subscribed = false;
+        this.managed = false;
 
     }
 
-    public Group (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, ArrayList<String> tags, boolean subscribed){
+    public Group (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, ArrayList<String> tags, boolean subscribed, boolean managed){
 
         this.groupName = name;
         this.groupDescription = description;
@@ -62,10 +65,11 @@ public class Group {
         this.groupTags = tags;
         this.groupType = incomingGroupType;
         this.subscribed = subscribed;
+        this.managed = managed;
     }
 
 
-    public Group (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, boolean subscribed){//tags are optional
+    public Group (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, boolean subscribed, boolean managed) {//tags are optional
 
         this.groupName = name;
         this.groupDescription = description;
@@ -73,8 +77,9 @@ public class Group {
         this.numGroupMembers = 1;
         this.groupType = incomingGroupType;
         this.subscribed = subscribed;
+        this.managed = managed;
 
-    }
+    }//end group
 
     public Group() {};
 

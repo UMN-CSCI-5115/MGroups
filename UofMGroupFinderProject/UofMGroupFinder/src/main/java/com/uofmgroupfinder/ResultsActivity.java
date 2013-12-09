@@ -169,7 +169,7 @@ public class ResultsActivity extends ListActivity {
         }
       };
 	
-	private class GroupAdapter extends ArrayAdapter<Group> {
+	public class GroupAdapter extends ArrayAdapter<Group> {
 
         private ArrayList<com.uofmgroupfinder.Groups.Group> groups;
 

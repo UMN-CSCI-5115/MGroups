@@ -3,6 +3,8 @@ package com.uofmgroupfinder;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ListActivity;
+import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +13,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.TextView;
+
+import com.uofmgroupfinder.Groups.Group;
+
+import java.util.ArrayList;
 
 public class ManagementActivity extends Activity {
 
@@ -45,7 +53,7 @@ public class ManagementActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.managment, menu);
         return true;
@@ -63,8 +71,40 @@ public class ManagementActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static class PlaceholderFragment extends Fragment implements View.OnClickListener, SearchView.OnQueryTextListener {
+    public class PlaceholderFragment extends ListFragment implements View.OnClickListener, SearchView.OnQueryTextListener {
         Button btn;
+        private ArrayList<Group> listToDisplay;
+        private GroupAdapter m_adapter;public class GroupAdapter extends ArrayAdapter<Group> {
+
+            private ArrayList<com.uofmgroupfinder.Groups.Group> groups;
+
+            public GroupAdapter(Context context, int textViewResourceId, ArrayList<com.uofmgroupfinder.Groups.Group> groups) {
+                super(context, textViewResourceId, groups);
+                this.groups = groups;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View v = convertView;
+                if (v == null) {
+                    LayoutInflater vi = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    v = vi.inflate(R.layout.row, null);
+                }
+                com.uofmgroupfinder.Groups.Group g = groups.get(position);
+                if (g != null) {
+                    TextView tt = (TextView) v.findViewById(R.id.toptext);
+                    TextView bt = (TextView) v.findViewById(R.id.bottomtext);
+                    if (tt != null) {
+                        tt.setText("Name: "+g.getGroupName());
+                    }
+                    if(bt != null){
+                        bt.setText("Status: "+ g.getGroupDescription());
+                    }
+                }
+                return v;
+            }
+        }
+
 
         public PlaceholderFragment() {
         }
@@ -75,6 +115,22 @@ public class ManagementActivity extends Activity {
 
             btn = (Button) getActivity().findViewById(R.id.new_group_button);
             btn.setOnClickListener(this);
+
+            com.uofmgroupfinder.Groups.Group group = null;
+
+
+            for(int i=0; i<MainActivity.listToSearch.size() ; i++) {
+                if(MainActivity.listToSearch.get(i).subscribed == true) {
+                    group = (MainActivity.listToSearch.get(i));
+                }
+            }
+
+            if(group != null){
+                listToDisplay = new ArrayList<Group>();
+                listToDisplay.add(group);
+                this.m_adapter = new GroupAdapter(getActivity(), R.layout.row, listToDisplay);
+                setListAdapter(this.m_adapter);
+            }//end if
 
         }//end onActivityCreated
 

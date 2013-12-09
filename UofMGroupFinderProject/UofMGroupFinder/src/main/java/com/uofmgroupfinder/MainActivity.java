@@ -60,7 +60,7 @@ public class MainActivity extends Activity  {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         //getMenuInflater().inflate(R.menu.main, menu);
         getMenuInflater().inflate(R.menu.main, menu);
@@ -88,7 +88,7 @@ public class MainActivity extends Activity  {
         Date startDate = new Date(11,11,11);
         Date endDate = new Date(11,11,11);
 
-        com.uofmgroupfinder.Groups.Group gr1 = new Group( "acm", "student group for computer geeks", members, groupTypes.Computer, tags, true);
+        com.uofmgroupfinder.Groups.Group gr1 = new Group( "acm", "student group for computer geeks", members, groupTypes.Computer, tags, true, true);
         com.uofmgroupfinder.Groups.Group gr2 = new Group( "Yolo", "student group for computer geeks", members, groupTypes.Computer, tags);
         com.uofmgroupfinder.Groups.Group gr3 = new Group( "swag", "student group for computer geeks", members, groupTypes.Computer, tags);
 
@@ -118,14 +118,14 @@ public class MainActivity extends Activity  {
         return 0;
     }
 
-    protected static int addGroup (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, ArrayList<String> tags, boolean subscribed){
-        com.uofmgroupfinder.Groups.Group grN = new Group(name, description, members, incomingGroupType, tags, subscribed);
+    protected static int addGroup (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, ArrayList<String> tags, boolean subscribed, boolean managed){
+        com.uofmgroupfinder.Groups.Group grN = new Group(name, description, members, incomingGroupType, tags, subscribed, managed);
         listToSearch.add(grN);
         return 0;
     }
 
-    protected static int addGroup (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, boolean subscribed){//tags are optional
-        com.uofmgroupfinder.Groups.Group grN = new Group(name, description, members, incomingGroupType, subscribed);
+    protected static int addGroup (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, boolean subscribed, boolean managed) {//tags are optional
+        com.uofmgroupfinder.Groups.Group grN = new Group(name, description, members, incomingGroupType, subscribed, managed);
         listToSearch.add(grN);
         return 0;
 
@@ -159,15 +159,15 @@ public class MainActivity extends Activity  {
 
             btn = (Button) getActivity().findViewById(R.id.settingsButton);
             btn.setOnClickListener(this);
-            
+
             SearchView searchView = (SearchView) getActivity().findViewById(R.id.mainSearchView);
             searchView.setOnQueryTextListener(this);
-            
+
         }//end onActivityCreated
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
             return rootView;
@@ -210,17 +210,17 @@ public class MainActivity extends Activity  {
         public boolean onQueryTextChange(String newText) {
             return true;
         }
-     
+
         @Override
         public boolean onQueryTextSubmit (String query) {
-        	Intent i = new Intent(getActivity(), ResultsActivity.class);
-        	i.putExtra("searchQuery",query);
-        	i.putExtra("searchType","any");
-        	i.putExtra("searchCat", "none");
-        	startActivity(i);
+            Intent i = new Intent(getActivity(), ResultsActivity.class);
+            i.putExtra("searchQuery",query);
+            i.putExtra("searchType","any");
+            i.putExtra("searchCat", "none");
+            startActivity(i);
             return true;
-            
-    }//end PlaceholderFragment class
 
-}
+        }//end PlaceholderFragment class
+
+    }
 }

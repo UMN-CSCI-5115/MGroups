@@ -187,7 +187,7 @@ public class NewGroupActivity extends Activity {
                     else
                         incomingGroupType = Group.groupTypes.Any;
 
-                    if(MainActivity.addGroup(name, description, members, incomingGroupType, tags, subscribed) == 0 && okToAdd == true) {
+                    if(MainActivity.addGroup(name, description, members, incomingGroupType, tags, subscribed, true) == 0 && okToAdd == true) {
                         message = "was created.";
                         String strMsg = String.format("Your group ", edtxGroupName.getText().toString());
                         message = String.format(strMsg, message);

@@ -14,9 +14,9 @@
     <string name="title_activity_results">FILLER TEXT</string>
     <string name="main_no_items">No groups to display</string>
     <string name="groupName">ACM</string>
-    <string name="groupDescription">Description - Student group for students interested in technology</string>
-    <string name="groupCategory">Category - Computer</string>
-    <string name="upComingEvents">upComingEvent - Hackethon</string>
+    <string name="groupDescription">Description: Student group for students interested in technology</string>
+    <string name="groupCategory">Category: Technology</string>
+    <string name="upComingEvents">Upcoming Event: Hackathon</string>
     <string name="SubscribeText">Subscribe</string>
 
     <color name="lightGray">#bdbdbd</color>
@@ -33,7 +33,7 @@
     <string name="managementTitle">Manage Groups</string>
     <string name="title_activity_group">GroupActivity</string>
     <string name="title_activity_management">ManagementActivity</string>
-    <string name="searchPrompt">Search</string>
+    <string name="searchPrompt">Enter keywords</string>
 
     <string-array name="group_arrays">
         <item>Please select Category</item>
@@ -43,7 +43,7 @@
         <item>Tech</item>
     </string-array>
 
-    <string name="group_prompt">Please select Category</string>
+    <string name="group_prompt">Select Category</string>
 
     <string-array name="event_arrays">
         <item>Please select Category</item>
@@ -53,7 +53,7 @@
         <item>Workshop</item>
     </string-array>
 
-    <string name="event_prompt">Please select Category</string>
+    <string name="event_prompt">--All Categories--</string>
     <string name="title_activity_result">Result</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_search_results">MainActivity</string>

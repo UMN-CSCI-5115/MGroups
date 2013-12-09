@@ -27,5 +27,9 @@
 
     <style name="grouptheme"></style>
 
+    <style name="spinner" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:colorForeground">@color/maroon</item>
+    </style>
+
 </resources>
 

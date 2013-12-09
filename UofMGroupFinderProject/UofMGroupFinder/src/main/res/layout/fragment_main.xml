@@ -97,15 +97,16 @@
         android:id="@+id/settingsButton" />
 
     <SearchView
-        android:layout_width="wrap_content"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:id="@+id/mainSearchView"
         android:layout_alignParentLeft="true"
         android:layout_above="@+id/groupSearchButton"
         android:layout_alignRight="@+id/groupSearchButton"
-        android:queryHint="@string/searchPrompt"
+        android:queryHint="Search for groups and events"
         android:visibility="visible"
-        android:paddingLeft="45dp"
+        android:iconifiedByDefault="false"
+        android:paddingLeft="0dp"
         android:showAsAction="always"/>
 
 </RelativeLayout>

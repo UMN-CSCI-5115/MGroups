@@ -16,6 +16,7 @@ public class Group {
    private int numGroupMembers;
    private ArrayList<String> groupTags;
    private groupTypes groupType;
+   private boolean subscribed;
 
     public static enum groupTypes{
         Any,
@@ -37,6 +38,7 @@ public class Group {
         this.numGroupMembers = 1;
         this.groupTags = tags;
         this.groupType = incomingGroupType;
+        this.subscribed = false;
     }
 
 
@@ -47,6 +49,30 @@ public class Group {
         this.groupMembers = members;
         this.numGroupMembers = 1;
         this.groupType = incomingGroupType;
+        this.subscribed = false;
+
+    }
+
+    public Group (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, ArrayList<String> tags, boolean subscribed){
+
+        this.groupName = name;
+        this.groupDescription = description;
+        this.groupMembers = members;
+        this.numGroupMembers = 1;
+        this.groupTags = tags;
+        this.groupType = incomingGroupType;
+        this.subscribed = subscribed;
+    }
+
+
+    public Group (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, boolean subscribed){//tags are optional
+
+        this.groupName = name;
+        this.groupDescription = description;
+        this.groupMembers = members;
+        this.numGroupMembers = 1;
+        this.groupType = incomingGroupType;
+        this.subscribed = subscribed;
 
     }
 
@@ -59,7 +85,7 @@ public class Group {
     public int getNumGroupMembers() {return this.numGroupMembers;}
     public ArrayList<String> getGroupTags() {return this.groupTags;}
     public groupTypes getGroupType() {return groupType;}
-
+    public boolean getSubscriptionStat() {return this.subscribed;}
 
     public void setGroupName(String incomingGroupName) {this.groupName = incomingGroupName;}
     public void setGroupDescription(String incomingGroupDescription) {this.groupDescription = groupDescription;}
@@ -67,10 +93,6 @@ public class Group {
     public void setGroupActivities(ArrayList<Activity> incomingActivities) {this.groupActivities  = incomingActivities;}
     public void setNumGroupMembers(int incomingNumGroupMembers) {this.numGroupMembers = incomingNumGroupMembers;}
     public void setGroupTags(ArrayList<String> incomingTags) {this.groupTags = incomingTags;}
-
-
-
-
-
+    public void setSubscriptionStat(boolean subStat) {this.subscribed = subStat;}
 
 }

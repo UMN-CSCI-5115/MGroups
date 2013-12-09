@@ -5,7 +5,6 @@ import android.app.Fragment;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,12 +12,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
-import com.uofmgroupfinder.*;
+import com.uofmgroupfinder.Groups.Group;
+import com.uofmgroupfinder.Agent.Agent;
+import com.uofmgroupfinder.Groups.Group.groupTypes;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends Activity  {
+
+    protected static com.uofmgroupfinder.Groups.Group group = null;
+    protected static List<Group> listToSearch = null;
+    protected static ArrayList<com.uofmgroupfinder.Activities.Activity> eventListToSearch = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +39,8 @@ public class MainActivity extends Activity  {
                     .commit();
         }//end if
 
+        if(group == null)
+            createGroupData();
 
         //code is from http://stackoverflow.com/questions/12750013/actionbar-logo-centered-and-action-items-on-sides
         // used to give clean actionbar
@@ -68,6 +78,59 @@ public class MainActivity extends Activity  {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void createGroupData() {
+        com.uofmgroupfinder.Agent.Agent agent = new Agent();
+        ArrayList<Agent> members = new ArrayList<Agent>();
+        members.add(agent);
+        ArrayList<String> tags = new ArrayList<String>();
+
+        Date startDate = new Date(11,11,11);
+        Date endDate = new Date(11,11,11);
+
+        com.uofmgroupfinder.Groups.Group gr1 = new Group( "acm", "student group for computer geeks", members, groupTypes.Computer, tags, true);
+        com.uofmgroupfinder.Groups.Group gr2 = new Group( "Yolo", "student group for computer geeks", members, groupTypes.Computer, tags);
+        com.uofmgroupfinder.Groups.Group gr3 = new Group( "swag", "student group for computer geeks", members, groupTypes.Computer, tags);
+
+        com.uofmgroupfinder.Activities.Activity ac1 = new com.uofmgroupfinder.Activities.Activity(startDate,endDate,"ice cream social","acm room","acm");
+
+
+        listToSearch = new ArrayList<com.uofmgroupfinder.Groups.Group>();
+        listToSearch.add(gr1);
+        listToSearch.add(gr2);
+        listToSearch.add(gr3);
+
+        eventListToSearch = new ArrayList<com.uofmgroupfinder.Activities.Activity>();
+        eventListToSearch.add(ac1);
+    }//end createGroupData
+
+
+    protected static int addGroup (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, ArrayList<String> tags){
+        com.uofmgroupfinder.Groups.Group grN = new Group(name, description, members, incomingGroupType, tags);
+        listToSearch.add(grN);
+        return 0;
+    }//end addGroup
+
+
+    protected static int addGroup (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType){//tags are optional
+        com.uofmgroupfinder.Groups.Group grN = new Group(name, description, members, incomingGroupType);
+        listToSearch.add(grN);
+        return 0;
+    }
+
+    protected static int addGroup (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, ArrayList<String> tags, boolean subscribed){
+        com.uofmgroupfinder.Groups.Group grN = new Group(name, description, members, incomingGroupType, tags, subscribed);
+        listToSearch.add(grN);
+        return 0;
+    }
+
+    protected static int addGroup (String name, String description, ArrayList<Agent> members, groupTypes incomingGroupType, boolean subscribed){//tags are optional
+        com.uofmgroupfinder.Groups.Group grN = new Group(name, description, members, incomingGroupType, subscribed);
+        listToSearch.add(grN);
+        return 0;
+
+    }
+
 
     /**************************************************************************************************************
      * A placeholder fragment containing a simple view.
@@ -126,7 +189,7 @@ public class MainActivity extends Activity  {
                     intent = new Intent(getActivity(), EventActivity.class);
                     break;
                 case R.id.SubscriptionsButton:
-                    intent = new Intent(getActivity(), ManagementActivity.class);
+                    intent = new Intent(getActivity(), SubscriptionActivity.class);
                     break;
                 case R.id.ManageGroupsButton:
                     intent = new Intent(getActivity(), ManagementActivity.class);

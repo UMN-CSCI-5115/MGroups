@@ -48,30 +48,11 @@ public class ResultsActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_results);
-	    
-		com.uofmgroupfinder.Agent.Agent agent = new Agent();
-		ArrayList<Agent> members = new ArrayList<Agent>();
-		members.add(agent);
-		ArrayList<String> tags = new ArrayList<String>();
-		
-		Date startDate = new Date(11,11,11);
-		Date endDate = new Date(11,11,11);
-		
-		com.uofmgroupfinder.Groups.Group gr1 = new Group( "acm", "student group for computer geeks", members, groupTypes.Computer, tags);
-		com.uofmgroupfinder.Groups.Group gr2 = new Group( "Yolo", "student group for computer geeks", members, groupTypes.Computer, tags);
-		com.uofmgroupfinder.Groups.Group gr3 = new Group( "swag", "student group for computer geeks", members, groupTypes.Computer, tags);
-		
-		com.uofmgroupfinder.Activities.Activity ac1 = new com.uofmgroupfinder.Activities.Activity(startDate,endDate,"ice cream social","acm room","acm");
-		
-		
-		listToSearch = new ArrayList<com.uofmgroupfinder.Groups.Group>();
-		listToSearch.add(gr1);
-		listToSearch.add(gr2);
-		listToSearch.add(gr3);
-		
-		eventListToSearch = new ArrayList<com.uofmgroupfinder.Activities.Activity>();
-		eventListToSearch.add(ac1);
-		
+
+        group = MainActivity.group;
+        listToSearch = MainActivity.listToSearch;
+        eventListToSearch = MainActivity.eventListToSearch;
+
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 		    String searchQuery = extras.getString("searchQuery");
@@ -131,7 +112,7 @@ public class ResultsActivity extends ListActivity {
 	
 	 /**
      * A placeholder fragment containing a simple view.
-     *
+     */
     public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
@@ -143,7 +124,7 @@ public class ResultsActivity extends ListActivity {
             View rootView = inflater.inflate(R.layout.fragment_result, container, false);
             return rootView;
         }
-    }*/
+    }
 
 
 	

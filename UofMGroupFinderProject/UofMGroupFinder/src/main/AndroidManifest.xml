@@ -96,6 +96,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ManagementActivity" />
         </activity>
+        <activity
+            android:name="com.uofmgroupfinder.SubscriptionActivity"
+            android:label="@string/title_activity_subscription"
+            android:parentActivityName="MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
     </application>
 
 </manifest>

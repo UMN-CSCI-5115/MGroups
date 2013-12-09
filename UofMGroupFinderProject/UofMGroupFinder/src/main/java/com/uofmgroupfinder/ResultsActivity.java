@@ -210,7 +210,7 @@ public class ResultsActivity extends ListActivity {
                         TextView bt = (TextView) v.findViewById(R.id.bottomtext);
                         if (tt != null) {
                               tt.setText("Name: "+g.getGroupName());     
-                              searchGroupName = g.GetGroupName();
+                              searchGroupName = g.getGroupName();
                         }
                         if(bt != null){
                               bt.setText("Status: "+ g.getGroupDescription());

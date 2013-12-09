@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
     <TextView
         android:id="@+id/groupName"
-      <!--   android:text="@string/groupName" -->
+        android:text="@string/groupName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50sp"
@@ -14,20 +14,20 @@
         android:layout_centerHorizontal="true"
         android:textSize="36sp"
         android:background="@color/gold"
-    />
-    
-      
+        />
+
+
     <TextView
-        android:id="@+id/groupCatergory"
-    <!--android:text="@string/groupCategory" -->
+        android:id="@+id/groupCategory"
+        android:text="@string/groupCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50sp"
         android:layout_centerHorizontal="true"
         android:background="@color/gold"
-    />
-    
-      
+        />
+
+
     <TextView
         android:id="@+id/groupDescription"
         android:text="@string/groupDescription"
@@ -36,9 +36,9 @@
         android:layout_marginBottom="50sp"
         android:layout_centerHorizontal="true"
         android:background="@color/gold"
-    />
-    
-      
+        />
+
+
     <TextView
         android:id="@+id/upComingEvents"
         android:text="@string/upComingEvents"
@@ -47,8 +47,8 @@
         android:layout_marginBottom="50sp"
         android:layout_centerHorizontal="true"
         android:background="@color/gold"
-    />
-    
+        />
+
     <Button
         android:id="@+id/SubscribeButton"
         android:layout_width="500dp"
@@ -63,7 +63,7 @@
         android:gravity="center_vertical"
         android:drawablePadding="20dp"
         android:layout_alignParentRight="true" />
-    
-    
+
+
 
 </LinearLayout>

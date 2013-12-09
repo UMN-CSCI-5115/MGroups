@@ -23,7 +23,7 @@
         android:id="@+id/new_group_button"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/listView"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="43dp"
         android:layout_marginRight="15dp"/>
 
     <TextView
@@ -42,8 +42,15 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="My Groups"
         android:id="@+id/textView2"
-        android:layout_alignTop="@+id/new_group_button"
+        android:layout_marginTop="52dp"
+        android:layout_marginLeft="14dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <View
+        android:layout_height="1dp"
+        android:background="#000000"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="100dp"/>
 
 </RelativeLayout>

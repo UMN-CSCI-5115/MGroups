@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.uofmgroupfinder.Agent.Agent;
+import com.uofmgroupfinder.Groups.Group;
 import com.uofmgroupfinder.ResultsGroup.PlaceholderFragment;
 
-import android.R;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,9 +37,9 @@ public class ResultsInfoActivity extends Activity {
 			Date startDate = new Date(11,11,11);
 			Date endDate = new Date(11,11,11);
 			
-			com.uofmgroupfinder.Groups.Group gr1 = new Group( "acm", "student group for computer geeks", members, groupTypes.Computer, tags);
-			com.uofmgroupfinder.Groups.Group gr2 = new Group( "Yolo", "student group for computer geeks", members, groupTypes.Computer, tags);
-			com.uofmgroupfinder.Groups.Group gr3 = new Group( "swag", "student group for computer geeks", members, groupTypes.Computer, tags);
+			com.uofmgroupfinder.Groups.Group gr1 = new Group( "acm", "student group for computer geeks", members, Group.groupTypes.Computer, tags);
+			com.uofmgroupfinder.Groups.Group gr2 = new Group( "Yolo", "student group for computer geeks", members, Group.groupTypes.Computer, tags);
+			com.uofmgroupfinder.Groups.Group gr3 = new Group( "swag", "student group for computer geeks", members, Group.groupTypes.Computer, tags);
 			
 			com.uofmgroupfinder.Activities.Activity ac1 = new com.uofmgroupfinder.Activities.Activity(startDate,endDate,"ice cream social","acm room","acm");
 			
@@ -52,14 +54,16 @@ public class ResultsInfoActivity extends Activity {
 		 
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_resultsinfo);
-	        
+
+            Bundle extras = getIntent().getExtras();
+
 	        String id = extras.getString("id");
 		    String searchType = extras.getString("searchType");
 		    String position = extras.getString("position");
 		    String searchGroupName;
 		    String searchEventName;
-		    LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
-		    View view = inflater.inflate(R.layout.activity_resultsinfo, null)
+		    LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		    View view = inflater.inflate(R.layout.activity_resultsinfo, null);
 		    if(searchType.equals("group")){
 		    	searchGroupName = extras.getString("searchGroupName");
 		    	for(int i=0;i < listToSearch.size(); i++ ){
@@ -68,7 +72,7 @@ public class ResultsInfoActivity extends Activity {
 		    			TextView textView = (TextView)view.findViewById(R.id.groupName);
 		    			TextView textView2 = (TextView)view.findViewById(R.id.groupCategory);
 		    			textView.setText(listToSearch.get(i).getGroupName());
-		    			textView2.setText(listToSearch.get(i).getGroupCategory());
+		    			textView2.setText(listToSearch.get(i).getGroupDescription());
 		    		}
 		    	}
 		    	

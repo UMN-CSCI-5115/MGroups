@@ -40,6 +40,9 @@ public class ResultsActivity extends ListActivity {
 	private GroupAdapter m_adapter;
 	private EventAdapter m_eventAdapter;
 	private Runnable viewOrders;
+	private String searchTypeGlobal;
+	private String searchGroupName;
+	private String searchEventName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,7 @@ public class ResultsActivity extends ListActivity {
 		    String searchQuery = extras.getString("searchQuery");
 		    String searchType = extras.getString("searchType");
 		    String searchCategory = extras.getString("searchCat");
+		    searchTypeGlobal = searchType;
 		    Toast.makeText(this, "Searching for: " + searchQuery + "...", Toast.LENGTH_SHORT).show();
 		if(searchType.equals("group"))
 		{
@@ -163,9 +167,11 @@ public class ResultsActivity extends ListActivity {
 	{
 		Intent intent = null;
 		intent = new Intent(this, ResultsInfoActivity.class);
-		//intent.putExtra("ListView",l);
+		intent.putExtra("searchType",searchTypeGlobal);
     	intent.putExtra("position",position);
     	intent.putExtra("id", id);
+    	intent.putExtra("searchGroupName",searchGroupName);
+    	intent.putExtra("searchEventName",searchEventName);
 		startActivity(intent);
 	}
 	
@@ -203,7 +209,9 @@ public class ResultsActivity extends ListActivity {
                         TextView tt = (TextView) v.findViewById(R.id.toptext);
                         TextView bt = (TextView) v.findViewById(R.id.bottomtext);
                         if (tt != null) {
-                              tt.setText("Name: "+g.getGroupName());                            }
+                              tt.setText("Name: "+g.getGroupName());     
+                              searchGroupName = g.GetGroupName();
+                        }
                         if(bt != null){
                               bt.setText("Status: "+ g.getGroupDescription());
                         }
@@ -233,7 +241,9 @@ public class ResultsActivity extends ListActivity {
                         TextView tt = (TextView) v.findViewById(R.id.toptext);
                         TextView bt = (TextView) v.findViewById(R.id.bottomtext);
                         if (tt != null) {
-                              tt.setText("Name: "+a.getEventTitle());                            }
+                              tt.setText("Name: "+a.getEventTitle());    
+                              searchEventName = a.getEventTitle();
+                        }
                         if(bt != null){
                               bt.setText("Status: "+ a.getStart());
                         }

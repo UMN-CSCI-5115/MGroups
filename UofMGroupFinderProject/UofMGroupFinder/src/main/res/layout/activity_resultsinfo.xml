@@ -6,7 +6,7 @@
     
     <TextView
         android:id="@+id/groupName"
-        android:text="@string/groupName"
+      <!--   android:text="@string/groupName" -->
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50sp"
@@ -19,7 +19,7 @@
       
     <TextView
         android:id="@+id/groupCatergory"
-        android:text="@string/groupCategory"
+    <!--android:text="@string/groupCategory" -->
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50sp"

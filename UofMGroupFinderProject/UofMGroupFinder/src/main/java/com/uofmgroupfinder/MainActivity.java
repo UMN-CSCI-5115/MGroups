@@ -25,7 +25,7 @@ import java.util.List;
 public class MainActivity extends Activity  {
 
     protected static com.uofmgroupfinder.Groups.Group group = null;
-    protected static List<Group> listToSearch = null;
+    protected static List<Group> listToSearch = new ArrayList<Group>();
     protected static ArrayList<com.uofmgroupfinder.Activities.Activity> eventListToSearch = null;
 
     @Override

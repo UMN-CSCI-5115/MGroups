@@ -3,6 +3,7 @@ package com.uofmgroupfinder;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Spinner;
 
 public class GroupActivity extends Activity {
 
@@ -47,7 +49,7 @@ public class GroupActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.group, menu);
         return true;
@@ -70,6 +72,7 @@ public class GroupActivity extends Activity {
      *************************************************************************************************************/
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener, SearchView.OnQueryTextListener {
         Button btn;
+        Spinner spn;
 
         public PlaceholderFragment() {
         }
@@ -77,15 +80,18 @@ public class GroupActivity extends Activity {
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
-            
+
+            btn = (Button) getActivity().findViewById(R.id.groupOKButton);
+            btn.setOnClickListener(this);
+
             SearchView searchView = (SearchView) getActivity().findViewById(R.id.groupSearchView);
             searchView.setOnQueryTextListener(this);
-            
+
         }//end onActivityCreated
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_group, container, false);
 
             return rootView;
@@ -100,6 +106,15 @@ public class GroupActivity extends Activity {
 
             // getId() returns this view's identifier.
             switch (v.getId()) {
+                case R.id.groupOKButton:
+                    spn = (Spinner) getActivity().findViewById(R.id.spinner);
+                    SearchView srchview = (SearchView) getActivity().findViewById(R.id.groupSearchView);
+
+                    intent = new Intent(getActivity(), ResultsActivity.class);
+                    intent.putExtra("searchQuery", "acm");
+                    intent.putExtra("searchType","group");
+                    intent.putExtra("searchCat", spn.getSelectedItem().toString());
+                    break;
                 default:
                     break;
             }//end switch
@@ -113,17 +128,12 @@ public class GroupActivity extends Activity {
         public boolean onQueryTextChange(String newText) {
             return true;
         }
-     
+
         @Override
         public boolean onQueryTextSubmit(String query) {
-        	Intent i = new Intent(getActivity(), ResultsActivity.class);
-        	i.putExtra("searchQuery",query);
-        	i.putExtra("searchType","group");
-        	i.putExtra("searchCat", "none");
-        	startActivity(i);
             return true;
-            
-    }//end PlaceholderFragment class
 
-}
+        }//end PlaceholderFragment class
+
+    }
 }

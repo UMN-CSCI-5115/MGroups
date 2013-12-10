@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">U of M Group Finder</string>
+    <string name="app_name">       U of M Group Finder</string>
     <string name="mainMenuText">Main Menu</string>
     <string name="findGroupsButtonText">Find Groups</string>
     <string name="findEventsButtonText">Find Events</string>

@@ -73,7 +73,7 @@ public class ManagementActivity extends Activity {
 
     public class PlaceholderFragment extends ListFragment implements View.OnClickListener, SearchView.OnQueryTextListener {
         Button btn;
-        private ArrayList<Group> listToDisplay;
+        private ArrayList<Group> listToDisplay = new ArrayList<Group>();;
         private GroupAdapter m_adapter;public class GroupAdapter extends ArrayAdapter<Group> {
 
             private ArrayList<com.uofmgroupfinder.Groups.Group> groups;
@@ -112,6 +112,8 @@ public class ManagementActivity extends Activity {
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
+
+
 
             btn = (Button) getActivity().findViewById(R.id.new_group_button);
             btn.setOnClickListener(this);

@@ -55,9 +55,13 @@ public class ResultsActivity extends ListActivity {
 
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
-		    String searchQuery = extras.getString("searchQuery");
+		    String searchQuery = "ice cream social";
 		    String searchType = extras.getString("searchType");
 		    String searchCategory = extras.getString("searchCat");
+            if (searchType.equals("group")) {
+                searchQuery = "acm";
+            }
+
 		    searchTypeGlobal = searchType;
 		    Toast.makeText(this, "Searching for: " + searchQuery + "...", Toast.LENGTH_SHORT).show();
 		if(searchType.equals("group"))
@@ -70,7 +74,7 @@ public class ResultsActivity extends ListActivity {
 		    		group = listToSearch.get(i);
 		    	}
 		    }
-            
+
 		    if(group != null){
                 listToDisplay = new ArrayList<Group>();
 		    	listToDisplay.add(group);
@@ -88,13 +92,13 @@ public class ResultsActivity extends ListActivity {
 		    		activity = eventListToSearch.get(i);
 		    	}
 		    }
-			
+
 			if(activity != null){
 				eventListToDisplay = new ArrayList<com.uofmgroupfinder.Activities.Activity>();
 				eventListToDisplay.add(activity);
 				this.m_eventAdapter = new EventAdapter(this,R.layout.row, eventListToDisplay);
 				setListAdapter(this.m_eventAdapter);
-				
+
 			}
 		}
 		}

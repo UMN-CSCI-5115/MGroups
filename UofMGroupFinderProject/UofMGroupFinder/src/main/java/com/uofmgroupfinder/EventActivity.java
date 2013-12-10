@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuInflater;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,7 @@ public class EventActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.event, menu);
         return true;
@@ -96,12 +97,13 @@ public class EventActivity extends Activity {
         mSearchText.setTextColor(Color.RED);
         return true;
     }
-   */ 
+   */
     /**************************************************************************************************************
      * A placeholder fragment containing a simple view.
      *************************************************************************************************************/
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener, OnQueryTextListener {
         Button btn;
+        Spinner spn;
 
         public PlaceholderFragment() {
         }
@@ -109,15 +111,18 @@ public class EventActivity extends Activity {
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
-            
+
+            btn = (Button) getActivity().findViewById(R.id.eventOKButton);
+            btn.setOnClickListener(this);
+
             SearchView searchView = (SearchView) getActivity().findViewById(R.id.eventSearchView);
             searchView.setOnQueryTextListener(this);
-            
+
         }//end onActivityCreated
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_event, container, false);
 
             return rootView;
@@ -132,6 +137,15 @@ public class EventActivity extends Activity {
 
             // getId() returns this view's identifier.
             switch (v.getId()) {
+                case R.id.eventOKButton:
+                    spn = (Spinner) getActivity().findViewById(R.id.eventSpinner);
+                    SearchView srchview = (SearchView) getActivity().findViewById(R.id.eventSearchView);
+
+                    intent = new Intent(getActivity(), ResultsActivity.class);
+                    intent.putExtra("searchQuery", srchview.getQuery());
+                    intent.putExtra("searchType","event");
+                    intent.putExtra("searchCat", spn.getSelectedItem().toString());
+                    break;
                 default:
                     break;
             }//end switch
@@ -145,17 +159,12 @@ public class EventActivity extends Activity {
         public boolean onQueryTextChange(String newText) {
             return true;
         }
-     
+
         @Override
         public boolean onQueryTextSubmit (String query) {
-        	Intent i = new Intent(getActivity(), ResultsActivity.class);
-        	i.putExtra("searchQuery",query);
-        	i.putExtra("searchType","event");
-        	i.putExtra("searchCat", "none");
-        	startActivity(i);
             return true;
-            
-    }//end PlaceholderFragment class
 
-}
+        }//end PlaceholderFragment class
+
+    }
 }

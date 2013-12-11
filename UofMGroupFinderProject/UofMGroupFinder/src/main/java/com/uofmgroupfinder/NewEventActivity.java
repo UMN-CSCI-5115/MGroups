@@ -2,7 +2,10 @@ package com.uofmgroupfinder;
 
 import android.app.Activity;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,27 +14,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SearchView;
-import android.widget.Spinner;
-import android.widget.TextView.BufferType;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Context;
+import android.widget.DatePicker;
+import android.widget.TextView;
 
 import com.uofmgroupfinder.Agent.Agent;
 import com.uofmgroupfinder.Groups.Group;
-import java.util.ArrayList;
 
-public class NewGroupActivity extends Activity {
+import java.util.ArrayList;
+import java.util.Calendar;
+
+public class NewEventActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_group);
-
+        setContentView(R.layout.activity_new_event);
 
         //code is from http://stackoverflow.com/questions/12750013/actionbar-logo-centered-and-action-items-on-sides
         // used to give clean actionbar
@@ -46,6 +45,7 @@ public class NewGroupActivity extends Activity {
         ab.setCustomView(v);
         ab.setDisplayHomeAsUpEnabled(true);
 
+
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -58,7 +58,7 @@ public class NewGroupActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.new_group, menu);
+        getMenuInflater().inflate(R.menu.new_event, menu);
         return true;
     }
 
@@ -74,12 +74,19 @@ public class NewGroupActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * A placeholder fragment containing a simple view.
+     */
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
         Button btn;
-        EditText edtxGroupName;
+        EditText edtxEventName;
         EditText edtx;
-        Spinner spn;
+        private TextView tvDisplayDate;
+        private DatePicker dpResult;
+
+        private int year;
+        private int month;
+        private int day;
 
         public PlaceholderFragment() {
         }
@@ -94,27 +101,36 @@ public class NewGroupActivity extends Activity {
             btn = (Button) getActivity().findViewById(R.id.ok_button);
             btn.setOnClickListener(this);
 
-            edtxGroupName = (EditText) getActivity().findViewById(R.id.nameText);
-            edtxGroupName.setText("");
+            edtxEventName = (EditText) getActivity().findViewById(R.id.eventNameText);
+            edtxEventName.setText("");
 
-            edtx = (EditText) getActivity().findViewById(R.id.descriptionText);
+            edtx = (EditText) getActivity().findViewById(R.id.eventDescriptionText);
             edtx.setText("");
 
-            edtx = (EditText) getActivity().findViewById(R.id.keywordText);
-            edtx.setText("");
-
-            edtx = (EditText) getActivity().findViewById(R.id.faceboookText);
-            edtx.setText("");
-
-            edtx = (EditText) getActivity().findViewById(R.id.emailText);
-            edtx.setText("");
-
+            setCurrentDateOnView();
         }//end onActivityCreated
+
+        // display current date
+        //got code for this from http://www.mkyong.com/android/android-date-picker-example/ as example on setting up dateview
+        public void setCurrentDateOnView() {
+
+            //tvDisplayDate = (TextView) getActivity().findViewById(R.id.tvDate);
+            dpResult = (DatePicker) getActivity().findViewById(R.id.datePicker);
+
+            final Calendar c = Calendar.getInstance();
+            year = c.get(Calendar.YEAR);
+            month = c.get(Calendar.MONTH);
+            day = c.get(Calendar.DAY_OF_MONTH);
+
+            // set current date into datepicker
+            dpResult.init(year, month, day, null);
+
+        }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_new_group, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_new_event, container, false);
             return rootView;
         }
 
@@ -141,61 +157,27 @@ public class NewGroupActivity extends Activity {
                     boolean subscribed = true;
                     boolean okToAdd = true;
 
-                    edtxGroupName = (EditText) getActivity().findViewById(R.id.nameText);
-                    name = edtxGroupName.getText().toString();
+                    edtxEventName = (EditText) getActivity().findViewById(R.id.nameText);
+                    name = edtxEventName.getText().toString();
 
                     if(name == "") {
                         okToAdd = false;
                         message = "Please Give group a name.";
                     }//end if
 
-                    edtx = (EditText) getActivity().findViewById(R.id.descriptionText);
+                    edtx = (EditText) getActivity().findViewById(R.id.eventDescriptionText);
                     description = edtx.getText().toString();
 
-                    edtx = (EditText) getActivity().findViewById(R.id.keywordText);
-                    temp = edtx.getText().toString();
 
-                    if(temp == "") {
-                        okToAdd = false;
-                        message = "Please Give group some keywords.";
-                    }//end if
-
-                    if(okToAdd) {
-                        tokens = temp.split("[, ]+");
-
-                        for(int i=0; i < tokens.length; i++)
-                            tags.add(tokens[i]);
-                    }//end if
-
-                    spn = (Spinner) getActivity().findViewById(R.id.categorySpinner);
-                    cat = spn.getSelectedItem().toString();
-
-                    if(cat == "Computer")
-                        incomingGroupType = Group.groupTypes.Computer;
-                    else if(cat == "Educational")
-                        incomingGroupType = Group.groupTypes.Educational;
-                    else if(cat == "Language")
-                        incomingGroupType = Group.groupTypes.Language;
-                    else if(cat == "Professional")
-                        incomingGroupType = Group.groupTypes.Professional;
-                    else if(cat == "Other")
-                        incomingGroupType = Group.groupTypes.Other;
-                    else if(cat == "Recreational")
-                        incomingGroupType = Group.groupTypes.Recreational;
-                    else if(cat == "Sports")
-                        incomingGroupType = Group.groupTypes.Sports;
-                    else
-                        incomingGroupType = Group.groupTypes.Any;
-
-                    if(MainActivity.addGroup(name, description, members, incomingGroupType, tags, subscribed, true) == 0 && okToAdd == true) {
-                        message = "was created.";
-                        String strMsg = String.format("Your group ", edtxGroupName.getText().toString());
-                        message = String.format(strMsg, message);
-                        title = "Group Added";
-                    }//end if
-                    else {
+                    //if(MainActivity.addGroup(name, description, members, incomingGroupType, tags, subscribed, true) == 0 && okToAdd == true) {
+                        //message = "was created.";
+                        //String strMsg = String.format("Your group ", edtxEventName.getText().toString());
+                        //message = String.format(strMsg, message);
+                        //title = "Group Added";
+                    //}//end if
+                    //else {
                         title = "Failed To Add";
-                    }//end else
+                    //}//end else
 
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
@@ -254,5 +236,3 @@ public class NewGroupActivity extends Activity {
     }//end PlaceholderFragment class
 
 }
-
-

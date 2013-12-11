@@ -52,7 +52,6 @@
         <item>Party</item>
         <item>Workshop</item>
     </string-array>
-
     <string-array name="catagory_arrays">
         <item>Any</item>
         <item>Computer</item>
@@ -72,5 +71,6 @@
     <string name="title_activity_new_group">NewGroupActivity</string>
     <string name="NewGroupTitle">Create a Group</string>
     <string name="title_activity_subscription">Subscriptions</string>
+    <string name="title_activity_new_event">NewEventActivity</string><string name="NewEventTitle">Create an Event</string>
 
 </resources>

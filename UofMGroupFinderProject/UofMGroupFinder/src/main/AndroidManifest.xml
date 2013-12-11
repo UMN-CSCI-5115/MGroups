@@ -104,6 +104,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
+        <activity
+            android:name="com.uofmgroupfinder.NewEventActivity"
+            android:label="@string/title_activity_new_event"
+            android:parentActivityName="ManagementActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ManagementActivity" />
+        </activity>
     </application>
 
 </manifest>
